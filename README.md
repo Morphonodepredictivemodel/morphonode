@@ -1,2 +1,2 @@
 # Morphonode Predictive Model (MPM)
-MPM is the R package for ultrasound signatures detection and malignancy prediction in vulvar cancer.
+The MPM project, and the realted the R package $morphonode$, for ultrasound signatures detection and malignancy prediction in vulvar cancer.
