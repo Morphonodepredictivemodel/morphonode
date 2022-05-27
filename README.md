@@ -3,7 +3,7 @@ The **Morphonode Predictive Model**, and the related **R** package `morphonode`,
 
 &nbsp;
 
-## Install the latest release from source package
+## Install the latest release from the source package
 
 The latest stable release is the **morphonode version 1.0.0**. You can download this and older versions from the "Releases" panel of this website.
 The zip or tar.gz package can be installed (from the home directory) in **R** with:
@@ -85,7 +85,7 @@ The MPM suite is composed by 4 modules:
   Conversely, a *low metastatic risk* (LMR) signature is generally associated with non-malignant phenotypes.
   Finally, a *moderate malignancy risk* (MMR) signature is the group with highest heterogeneity and requires RFC and RBM results to be characterized.
 - **Morphonode-SP**. Similarity prolfiling module. The module searches and ranks ultrasound profiles from the given (by default, the simulated) ultrasound
-  features dataset. The default function is cosine similarity and the 5 top-similar profiles are shown to screen.
+  features dataset. The default function is cosine similarity and 5 top-similar profiles are shown to screen.
 
 Both the input ultrasound profile and the similar ones are reported as a list of attributes, including:
 
@@ -106,4 +106,4 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 - **Grouping**: *absent* (1), *moderate* (2), *complete* (3).
 - **Color score**: ordinal variable from 1 to 5.
 - **Outcome**: *non-malignant* (0), *malignant* (1).
-- **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastasis).
+- **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
