@@ -169,10 +169,10 @@ brier <- function(data, status, k = 5, method = "CV") {
 #'    or root mean squared error sqrt(sum(L)/n), for "log" and "sqerror", 
 #'    respectively.
 #'
+#' @import imputeR
 #' @import randomForest
 #' @importFrom stats cor
 #' @importFrom lsa cosine
-#' @importFrom imputeR impute
 #' @export
 #'
 #' @return A list of 2 objects:
