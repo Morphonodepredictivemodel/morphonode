@@ -22,7 +22,6 @@
 
 # -------------------------------------------------------------------- #
 
-
 #' @title Build a random forest classifier
 #'
 #' @description Wrapper for the \code{\link[CMA]{GenerateLearningsets}} 
@@ -991,7 +990,7 @@ p.boot <- function(x, rep = 5000, ci.method = "bca", formula = "f1") {
 	return(list(boot = R, ci = ci))
 }
 
-newEntry <- function(x, m) {
+new.entry <- function(x, m) {
 	v <- vector()
 	n <- nrow(x)
 	j <- sample(1:n, m, replace = FALSE)
@@ -1026,7 +1025,7 @@ newEntry <- function(x, m) {
 #'
 #' @author Fernando Palluzzi \email{fernando.palluzzi@gmail.com}
 #'
-#' @seealso See \code{\link[morphonode]{new.profile}} for ultrasound 
+#' @seealso See \code{\link[morphonode]{newProfile}} for ultrasound 
 #'    profile creation and \code{\link[morphonode]{us.predict}} for 
 #'    subject classification.
 #' 
@@ -1062,7 +1061,7 @@ us.simulate <- function(reps = 1, x = mpm.us, y = NULL, signature = NULL,
 		#n <- nrow(x)
 		m <- ncol(x)
 		while (reps > 0) {
-			v <- rbind(v, newEntry(x, m))
+			v <- rbind(v, new.entry(x, m))
 			reps <- reps - 1
 		}
 		if (is.null(header)) colnames(v) <- colnames(x)
