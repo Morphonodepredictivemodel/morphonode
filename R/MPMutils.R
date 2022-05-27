@@ -1032,26 +1032,26 @@ new.entry <- function(x, m) {
 #' @examples
 #' 
 #' # Simulate a generic ultrasound profile
-#' u <- simulate.us()
+#' u <- us.simulate()
 #' print(u)
 #' 
 #' # Simulate a non-malignant ultrasound profile
-#' u0 <- simulate.us(y = 0)
+#' u0 <- us.simulate(y = 0)
 #' print(u0)
 #' 
 #' # Simulate a malignant ultrasound profile
-#' u1 <- simulate.us(y = 1)
+#' u1 <- us.simulate(y = 1)
 #' print(u1)
 #' 
 #' # Simulate a high metastatic risk profile (single metastasis event)
-#' u.hmr <- simulate.us(signature = "HMR")
+#' u.hmr <- us.simulate(signature = "HMR")
 #' print(u.hmr)
 #' 
 #' # Simulate a metastatic ultrasound profile (multiple metastasis events)
-#' u.met <- simulate.us(signature = "MET")
+#' u.met <- us.simulate(signature = "MET")
 #' print(u.met)
 #'
-simulate.us <- function(reps = 1, x = mpm.us, y = NULL, signature = NULL,
+us.simulate <- function(reps = 1, x = mpm.us, y = NULL, signature = NULL,
                         features = 2:15, header = NULL) {
 	if (!is.null(x)) {
 		if (!is.null(y)) x <- x[x$y == y,]
