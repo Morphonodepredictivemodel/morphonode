@@ -59,6 +59,7 @@ The results should look like the following:
 # ------------------------------------------------------------------------------------------- #
 ```
 &nbsp;
+
 The MPM suite is composed by 4 modules:
 
 - **Morphonode-RFC**. Random forest classification (RFC) and prediction error (E) estimate.
