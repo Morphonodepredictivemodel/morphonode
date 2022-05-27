@@ -1,9 +1,14 @@
 # Morphonode Predictive Model (MPM)
 The **Morphonode Predictive Model**, and the related **R** package `morphonode`, is the computational framework for ultrasound signatures detection and malignancy prediction in vulvar cancer.
 
-## Install the latest release
+## Install the latest release from source package
 
-...
+The latest stable release is the morphonode version 1.0.0. You can download this and older versions from the "Releases" panel of this website.
+The zip or tar.gz package can be installed (from the home directory) in **R** with:
+
+``` r
+install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
+```
 
 ## Installation from source through the R package `devtools`
 
