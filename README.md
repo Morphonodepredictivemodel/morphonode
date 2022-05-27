@@ -123,7 +123,7 @@ As shown in the coden above, the object `x` contains -1 values corresponding to 
 $ultrasound
           shortAxis            cortical               hilum  inflammatoryStroma 
                10.0                 6.3                 1.0                 0.0 
-extracapsularSpread        ecostructure                 FID                 VFL 
+extracapsularSpread       echostructure                 FID                 VFL 
                 0.0                 0.0                 0.0                -1.0 
  corticalThickening     vascularPattern                CMID               shape 
                 2.0                 2.0                 3.0                -1.0 
