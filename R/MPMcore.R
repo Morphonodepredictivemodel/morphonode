@@ -22,6 +22,7 @@
 
 # -------------------------------------------------------------------- #
 
+
 #' @title Create a new ultrasound profile
 #'
 #' @description Creates a new ultrasound profile, used as input for the 
