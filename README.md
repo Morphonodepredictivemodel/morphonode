@@ -134,3 +134,17 @@ $missing
 [1] 8 12 13 14
 ```
 
+The ultrasound profile `x` is a list of two objects: an ultrasound features vector and a vector of indices indentifying missing values.
+The MPM launcher gets rid of missing values by imputing them on-the-fly:
+
+```r
+...
+```
+
+
+
+
+
+
+
+
