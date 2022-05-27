@@ -1025,7 +1025,7 @@ new.entry <- function(x, m) {
 #'
 #' @author Fernando Palluzzi \email{fernando.palluzzi@gmail.com}
 #'
-#' @seealso See \code{\link[morphonode]{newProfile}} for ultrasound 
+#' @seealso See \code{\link[morphonode]{new.profile}} for ultrasound 
 #'    profile creation and \code{\link[morphonode]{us.predict}} for 
 #'    subject classification.
 #' 
