@@ -21,7 +21,7 @@ The whole MPM suite can be launched in two very simple steps:
 
 - Defining the ultrasound profile (in this example we will use a simulated malignant profile)
 ``` r
-x <- newProfile(us.simulate(y = 1))
+x <- new.profile(us.simulate(y = 1))
 ```
 - Launching the model!
 ``` r
