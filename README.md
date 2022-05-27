@@ -113,7 +113,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 A new profile can be initialized manually, including each ultrasound value in the same order of the previous chapter (points 3 to 16).
 
 ```r
-x <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, 2, 2, 3, -1, -1, -1))
+x <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, -1, 2, 2, 3, -1, -1, -1))
 ```
 
 As shown in the coden above, the object `x` contains -1 values corresponding to missing data:
@@ -124,13 +124,13 @@ $ultrasound
           shortAxis            cortical               hilum  inflammatoryStroma 
                10.0                 6.3                 1.0                 0.0 
 extracapsularSpread        ecostructure                 FID                 VFL 
-                0.0                 0.0                 0.0                 1.0 
+                0.0                 0.0                 0.0                -1.0 
  corticalThickening     vascularPattern                CMID               shape 
                 2.0                 2.0                 3.0                -1.0 
            grouping          colorScore 
                -1.0                -1.0 
 
 $missing
-[1] 12 13 14
+[1] 8 12 13 14
 ```
 
