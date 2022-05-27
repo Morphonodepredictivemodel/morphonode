@@ -156,7 +156,7 @@ The MPM classifier (Morphonode-RFC module) is based on an
 \examples{
 
 # Create a simulated malignant ultrasound profile
-x <- new.profile(simulate.us(y = 1))
+x <- new.profile(us.simulate(y = 1))
 
 # Lauch the Morhonode Predictive Model
 u <- us.predict(x)
@@ -176,7 +176,7 @@ R News, 2(3):18-22. <https://doi.org/10.1023/A:1010933404324>
 \seealso{
 See \code{\link[morphonode]{new.profile}} to create a new 
    ultrasound profile. 
-   See also \code{\link[morphonode]{simulate.us}} for ultrasound 
+   See also \code{\link[morphonode]{us.simulate}} for ultrasound 
    data simulation.
 }
 \author{

@@ -104,7 +104,7 @@ Prepare a new ultrasound profile for metastatic risk
 \examples{
 
 # Prepare a simulated malignant ultrasound profile
-x <- new.profile(simulate.us(y = 1))
+x <- new.profile(us.simulate(y = 1))
 print(x)
 
 # Set the new profile for RFC prediction

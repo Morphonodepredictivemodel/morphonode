@@ -58,7 +58,7 @@ Vector similarity search across a reference dataset.
 \examples{
 
 # Prepare a simulated malignant ultrasound profile
-x <- new.profile(simulate.us(y = 1))
+x <- new.profile(us.simulate(y = 1))
 u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 
 # Top-similar profiles

@@ -50,19 +50,19 @@ print(u)
 ### New profile from simulated data
 
 # High metastatic risk profile
-u.hmr <- new.profile(simulate.us(signature = "HMR"))
+u.hmr <- new.profile(us.simulate(signature = "HMR"))
 print(u.hmr)
 
 # Low metastatic risk profile
-u.lmr <- new.profile(simulate.us(signature = "LMR"))
+u.lmr <- new.profile(us.simulate(signature = "LMR"))
 print(u.lmr)
 
 # Malignant profile
-u1 <- new.profile(simulate.us(y = 1))
+u1 <- new.profile(us.simulate(y = 1))
 print(u1)
 
 # Non-malignant profile
-u0 <- new.profile(simulate.us(y = 0))
+u0 <- new.profile(us.simulate(y = 0))
 print(u0)
 
 }
