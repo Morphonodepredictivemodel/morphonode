@@ -1,7 +1,11 @@
 # Morphonode Predictive Model (MPM)
 The **Morphonode Predictive Model**, and the related **R** package `morphonode`, is the computational framework for ultrasound signatures detection and malignancy prediction in vulvar cancer.
 
-## Installation
+## Install the latest release
+
+...
+
+## Installation from source through the R package `devtools`
 
 The latest development version can be installed through **GitHub** from any **R** environment:
 
@@ -19,15 +23,15 @@ This will download the source code, build the morphonode tar.gz package, and ins
 
 The whole MPM suite can be launched in two very simple analysis steps:
 
-- Step 0: library loading.
+- Step 0:  library loading.
 ``` r
 library(morphonode)
 ```
-- Step 1: defining the ultrasound profile (in this example we will use a simulated malignant profile).
+- Step 1:  defining the ultrasound profile (in this example we will use a simulated malignant profile).
 ``` r
 x <- new.profile(us.simulate(y = 1))
 ```
-- Step 2: Launching the model!
+- Step 2:  Launching the model!
 ``` r
 mpm <- us.predict(x)
 ```
