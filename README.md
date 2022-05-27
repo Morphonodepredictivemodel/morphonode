@@ -5,7 +5,7 @@ The **Morphonode Predictive Model**, and the related **R** package `morphonode`,
 
 ## Install the latest release from source package
 
-The latest stable release is the morphonode version 1.0.0. You can download this and older versions from the "Releases" panel of this website.
+The latest stable release is the **morphonode version 1.0.0**. You can download this and older versions from the "Releases" panel of this website.
 The zip or tar.gz package can be installed (from the home directory) in **R** with:
 
 ``` r
@@ -32,15 +32,15 @@ This will download the source code, build the morphonode tar.gz package, and ins
 
 The whole MPM suite can be launched in two very simple analysis steps:
 
-- Step 0: &nbsp; library loading.
+- Step 0: &nbsp; Library loading.
 ``` r
 library(morphonode)
 ```
-- Step 1: &nbsp; defining the ultrasound profile (in this example we will use a simulated malignant profile).
+- Step 1: &nbsp; Defining the ultrasound profile (in this example we will use a simulated malignant profile).
 ``` r
 x <- new.profile(us.simulate(y = 1))
 ```
-- Step 2: &nbsp; Launching the model!
+- Step 2: &nbsp; Launching the suite!
 ``` r
 mpm <- us.predict(x)
 ```
@@ -86,3 +86,24 @@ The MPM suite is composed by 4 modules:
   Finally, a *moderate malignancy risk* (MMR) signature is the group with highest heterogeneity and requires RFC and RBM results to be characterized.
 - **Morphonode-SP**. Similarity prolfiling module. The module searches and ranks ultrasound profiles from the given (by default, the simulated) ultrasound
   features dataset. The default function is cosine similarity and the 5 top-similar profiles are shown to screen.
+
+Both the input ultrasound profile and the similar ones are reported as a list of attributes, including:
+
+- **Progressive number** (the smaller the number, the higher the similarity; "0" is the input profile).
+- **Similarity coefficient** (w). By default, cosine similarity is used.
+- **Short axis**: length in millimeters.
+- **Cortical thickness**: thickness in millimeter.
+- **Nodal core sign** (hilum): *absent* (0, metastatic trait), *present* (1).
+- **Perinodal hyperechogenic ring**: *absent* (0), *present* (1, metastatic trait).
+- **Cortical interruption**: *absent* (0), *present* (1, metastatic trait).
+- **Echogenicity**: *homogeneous* (0), *inhomogeneous* (1).
+- **Focal intranodal deposit**: *absent* (0), *hyperechoic* (1), *anaechoic, cystic areas* (2), *both* (3).
+- **Vascular flow localization**: *non-vascularized* (0), *central* (1), *peripheral* (2), *extranodal* (3), *combined* (4).
+- **Cortical thickening**: *not evaluable* (0), *absent* (1), *focal* (2), *concentric* (3), *eccentric* (4).
+- **Vascular flow architecture pattern**: *non-vascularized* (0), *longitudinal axis* (1), *scattered* (2), *branched* (3), *chaotic* (4).
+- **Cortical-Medullar interface distortion**: *absent* (1), *focal* (2), *diffused* (3), *medulla not visible* (4).
+- **Shape**: *elliptic* (1), *circular* (2), *irregular* (3).
+- **Grouping**: *absent* (1), *moderate* (2), *complete* (3).
+- **Color score**: ordinal variable from 1 to 5.
+- **Outcome**: *non-malignant* (0), *malignant* (1).
+- **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastasis).
