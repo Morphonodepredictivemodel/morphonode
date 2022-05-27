@@ -991,7 +991,7 @@ p.boot <- function(x, rep = 5000, ci.method = "bca", formula = "f1") {
 	return(list(boot = R, ci = ci))
 }
 
-new.entry <- function(x, m) {
+newEntry <- function(x, m) {
 	v <- vector()
 	n <- nrow(x)
 	j <- sample(1:n, m, replace = FALSE)
@@ -1062,7 +1062,7 @@ us.simulate <- function(reps = 1, x = mpm.us, y = NULL, signature = NULL,
 		#n <- nrow(x)
 		m <- ncol(x)
 		while (reps > 0) {
-			v <- rbind(v, new.entry(x, m))
+			v <- rbind(v, newEntry(x, m))
 			reps <- reps - 1
 		}
 		if (is.null(header)) colnames(v) <- colnames(x)
