@@ -113,7 +113,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 A new profile can be initialized manually, including each ultrasound value in the same order of the previous chapter (points 3 to 16).
 
 ```r
-x <- new.us <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, 2, 2, 3, -1, -1, -1))
+x <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, 2, 2, 3, -1, -1, -1))
 ```
 
 As shown in the coden above, the object `x` contains -1 values corresponding to missing data:
