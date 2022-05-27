@@ -138,7 +138,33 @@ The ultrasound profile `x` is a list of two objects: an ultrasound features vect
 The MPM launcher gets rid of missing values by imputing them on-the-fly:
 
 ```r
-...
+> mpm <- us.predict(x)
+Imputation task is: Classification 
+iteration 1 using rpartC in progress...done!
+Difference after iteration 1 is 0 
+iteration 2 using rpartC in progress...done!
+Difference after iteration 2 is 0 
+
+       Morphonode Predictive Model output
+# ------------------------------------------------------------------------------------------- #
+|     Prediction (Morphonode-RFC): MALIGNANT (Y = 1)                                          |
+|      Estimated prediction error: 0.033     (cutoff: E < 1)                                  |
+|  Risk estimate (Morphonode-RBM): 0.916                                                      |
+|                      Risk level: HIGH (> 0.29)                                              |
+|       Signature (Morphonode-DT): HMR (high metastatic risk)                                 |
+|                                                                                             |
+|--- Input profile ---------------------------------------------------------------------------|
+|                                                                                             |
+| [0] w = 1.000 | 10.00 |  6.30 | 1 | 0 | 0 | 0 | 0 | 1 | 2 | 2 | 3 | 1 | 1 | 1 | Y = 1 | HMR |
+|                                                                                             |
+|--- Top-similar profiles (w: cosine similarity) ---------------------------------------------|
+|                                                                                             |
+| [1] w = 0.993 |  9.20 |  6.40 | 1 | 0 | 0 | 0 | 0 | 2 | 2 | 2 | 2 | 1 | 1 | 1 | Y = 1 | HMR |
+| [2] w = 0.992 |  7.00 |  3.69 | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 2 | 1 | 1 | 1 | Y = 0 | MMR |
+| [3] w = 0.989 | 11.50 |  6.40 | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 3 | 1 | 1 | 2 | Y = 1 | MMR |
+| [4] w = 0.985 | 10.89 |  7.84 | 1 | 0 | 1 | 0 | 1 | 2 | 3 | 3 | 4 | 2 | 2 | 2 | Y = 1 | MET |
+| [5] w = 0.985 | 11.90 |  6.30 | 1 | 0 | 0 | 0 | 1 | 1 | 2 | 3 | 2 | 1 | 2 | 2 | Y = 1 | HMR |
+# ------------------------------------------------------------------------------------------- #
 ```
 
 
