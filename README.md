@@ -17,14 +17,17 @@ This will download the source code, build the morphonode tar.gz package, and ins
 
 ## Morphonode Predictive Model basic usage
 
-The whole MPM suite can be launched in two very simple steps:
+The whole MPM suite can be launched in two very simple analysis steps:
 
-- Defining the ultrasound profile (in this example we will use a simulated malignant profile)
+- Step 0: library loading.
 ``` r
 library(morphonode)
+```
+- Step 1: defining the ultrasound profile (in this example we will use a simulated malignant profile).
+``` r
 x <- new.profile(us.simulate(y = 1))
 ```
-- Launching the model!
+- Step 2: Launching the model!
 ``` r
 mpm <- us.predict(x)
 ```
