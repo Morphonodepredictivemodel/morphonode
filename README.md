@@ -89,25 +89,48 @@ The MPM suite is composed by 4 modules:
 
 Both the input ultrasound profile and the similar ones are reported as a list of attributes, including:
 
-- **Progressive number** (the smaller the number, the higher the similarity; "0" is the input profile).
-- **Similarity coefficient** (w). By default, cosine similarity is used.
-- **Short axis**: length in millimeters.
-- **Cortical thickness**: thickness in millimeter.
-- **Nodal core sign** (hilum): *absent* (0, metastatic trait), *present* (1).
-- **Perinodal hyperechogenic ring**: *absent* (0), *present* (1, metastatic trait).
-- **Cortical interruption**: *absent* (0), *present* (1, metastatic trait).
-- **Echogenicity**: *homogeneous* (0), *inhomogeneous* (1).
-- **Focal intranodal deposit**: *absent* (0), *hyperechoic* (1), *anaechoic, cystic areas* (2), *both* (3).
-- **Vascular flow localization**: *non-vascularized* (0), *central* (1), *peripheral* (2), *extranodal* (3), *combined* (4).
-- **Cortical thickening**: *not evaluable* (0), *absent* (1), *focal* (2), *concentric* (3), *eccentric* (4).
-- **Vascular flow architecture pattern**: *non-vascularized* (0), *longitudinal axis* (1), *scattered* (2), *branched* (3), *chaotic* (4).
-- **Cortical-Medullar interface distortion**: *absent* (1), *focal* (2), *diffused* (3), *medulla not visible* (4).
-- **Shape**: *elliptic* (1), *circular* (2), *irregular* (3).
-- **Grouping**: *absent* (1), *moderate* (2), *complete* (3).
-- **Color score**: ordinal variable from 1 to 5.
-- **Outcome**: *non-malignant* (0), *malignant* (1).
-- **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
+1. **Progressive number** (the smaller the number, the higher the similarity; "0" is the input profile).
+2. **Similarity coefficient** (w). By default, cosine similarity is used.
+3. **Short axis**: length in millimeters.
+4. **Cortical thickness**: thickness in millimeters.
+5. **Nodal core sign** (hilum): *absent* (0, metastatic trait), *present* (1).
+6. **Perinodal hyperechogenic ring**: *absent* (0), *present* (1, metastatic trait).
+7. **Cortical interruption**: *absent* (0), *present* (1, metastatic trait).
+8. **Echogenicity**: *homogeneous* (0), *inhomogeneous* (1).
+9. **Focal intranodal deposit**: *absent* (0), *hyperechoic* (1), *anaechoic, cystic areas* (2), *both* (3).
+10. **Vascular flow localization**: *non-vascularized* (0), *central* (1), *peripheral* (2), *extranodal* (3), *combined* (4).
+11. **Cortical thickening**: *not evaluable* (0), *absent* (1), *focal* (2), *concentric* (3), *eccentric* (4).
+12. **Vascular flow architecture pattern**: *non-vascularized* (0), *longitudinal axis* (1), *scattered* (2), *branched* (3), *chaotic* (4).
+13. **Cortical-Medullar interface distortion**: *absent* (1), *focal* (2), *diffused* (3), *medulla not visible* (4).
+14. **Shape**: *elliptic* (1), *circular* (2), *irregular* (3).
+15. **Grouping**: *absent* (1), *moderate* (2), *complete* (3).
+16. **Color score**: ordinal variable from 1 to 5.
+17. **Outcome**: *non-malignant* (0), *malignant* (1).
+18. **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
 
 ## Defining an ultrasound profile
 
+A new profile can be initialized manually, including each ultrasound value in the same order of the previous chapter (points 3 to 16).
+
+```r
+x <- new.us <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, 2, 2, 3, -1, -1, -1))
+```
+
+As shown in the coden above, the object `x` contains -1 values corresponding to missing data:
+
+```
+> x
+$ultrasound
+          shortAxis            cortical               hilum  inflammatoryStroma 
+               10.0                 6.3                 1.0                 0.0 
+extracapsularSpread        ecostructure                 FID                 VFL 
+                0.0                 0.0                 0.0                 1.0 
+ corticalThickening     vascularPattern                CMID               shape 
+                2.0                 2.0                 3.0                -1.0 
+           grouping          colorScore 
+               -1.0                -1.0 
+
+$missing
+[1] 12 13 14
+```
 
