@@ -137,7 +137,7 @@ $missing
 The ultrasound profile `x` is a list of two objects: an ultrasound features vector and a vector of indices indentifying missing values.
 The MPM launcher gets rid of missing values by imputing them on-the-fly:
 
-```r
+```
 > mpm <- us.predict(x)
 Imputation task is: Classification 
 iteration 1 using rpartC in progress...done!
