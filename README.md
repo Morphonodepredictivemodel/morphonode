@@ -3,13 +3,14 @@ The **Morphonode Predictive Model**, and the related **R** package `morphonode`,
 
 ## Installation
 
-The latest development version can be installed into an **R** environment from **GitHub**:
+The latest development version can be installed through **GitHub** from any **R** environment:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
+This will download the source code, build, and install the morphonode tar.gz package locally.\\
 
 # Using the Morphonode Predictive Model suite
 
