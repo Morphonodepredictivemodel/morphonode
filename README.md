@@ -10,7 +10,9 @@ The latest development version can be installed through **GitHub** from any **R*
 devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
-This will download the source code, build, and install the morphonode tar.gz package locally.\\
+This will download the source code, build the morphonode tar.gz package, and install it locally.
+
+<br/><br/>
 
 # Using the Morphonode Predictive Model suite
 
@@ -20,7 +22,7 @@ The whole MPM suite can be launched in two very simple steps:
 
 - Defining the ultrasound profile (in this example we will use a simulated malignant profile)
 ``` r
-x <- new.profile(simulate.us(y = 1))
+x <- new.profile(us.simulate(y = 1))
 ```
 - Launching the model!
 ``` r
