@@ -36,7 +36,7 @@ The whole MPM suite can be launched in two very simple analysis steps:
 ``` r
 library(morphonode)
 ```
-- Step 1: &nbsp; Defining the ultrasound profile (in this example we will use a simulated malignant profile).
+- Step 1: &nbsp; Defining the ultrasound profile (in this example, we will use a simulated malignant profile).
 ``` r
 x <- new.profile(us.simulate(y = 1))
 ```
@@ -72,7 +72,7 @@ The results should look like the following:
 The MPM suite is composed by 4 modules:
 
 - **Morphonode-RFC**. Random forest classification (RFC) and prediction error (E) estimate.
-  The predicted phenotype can be either malignant (y = 1) or non-malignant (y = 0).
+  The predicted phenotype can be either *malignant* (y = 1) or *non-malignant* (y = 0).
   As a rule of thumb, if E is above or equal to 1, the prediction should be considered as unreliable.
 - **Morphonode-RBM**. Malignancy risk estimation by robust binomial modeling (RBM).
   The RBM offers a continuous estimation of y (i.e., the malignancy risk), thus the higher the accordance with the RFC, the higher the prediction
@@ -107,3 +107,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 - **Color score**: ordinal variable from 1 to 5.
 - **Outcome**: *non-malignant* (0), *malignant* (1).
 - **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
+
+## Defining an ultrasound profile
+
+
