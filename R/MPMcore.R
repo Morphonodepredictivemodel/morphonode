@@ -73,19 +73,19 @@
 #' ### New profile from simulated data
 #' 
 #' # High metastatic risk profile
-#' u.hmr <- new.profile(simulate.us(signature = "HMR"))
+#' u.hmr <- new.profile(us.simulate(signature = "HMR"))
 #' print(u.hmr)
 #'
 #' # Low metastatic risk profile
-#' u.lmr <- new.profile(simulate.us(signature = "LMR"))
+#' u.lmr <- new.profile(us.simulate(signature = "LMR"))
 #' print(u.lmr)
 #'
 #' # Malignant profile
-#' u1 <- new.profile(simulate.us(y = 1))
+#' u1 <- new.profile(us.simulate(y = 1))
 #' print(u1)
 #'
 #' # Non-malignant profile
-#' u0 <- new.profile(simulate.us(y = 0))
+#' u0 <- new.profile(us.simulate(y = 0))
 #' print(u0)
 #'
 new.profile <- function(u = NULL, ...) {
@@ -425,7 +425,7 @@ set.missing <- function(v, ref = NULL, levels = NULL, con = 1:2,
 #' @examples
 #' 
 #' # Prepare a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' 
 #' # Set the new profile for RFC prediction
 #' u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
@@ -526,7 +526,7 @@ set.rfcdata <- function(u, levels = NULL, ref = NULL) {
 #' @examples
 #' 
 #' # Prepare a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' print(x)
 #' 
 #' # Set the new profile for RFC prediction
@@ -955,7 +955,7 @@ uss <- function(x, dichotomous = FALSE, dct = 2,
 #' @examples
 #' 
 #' # Prepare a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 #' 
 #' # Top-similar profiles
@@ -1053,7 +1053,7 @@ topsim <- function(v, x = mpm.us, f = "cosine", k = 5, p = 0.7,
 #' @examples
 #' 
 #' # Prepare a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 #' v <- set.rbmdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 #' print(u)
@@ -1158,7 +1158,7 @@ ranksim <- function(u, v = NULL, x = mpm.us, k = 5, p = 0.7,
 #' @examples
 #' 
 #' # Prepare a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 #' print(u)
 #' 
@@ -1452,7 +1452,7 @@ printout <- function(u, x, y, E, p, mrs, k = 5, wmax = 1,
 #'
 #' @seealso See \code{\link[morphonode]{new.profile}} to create a new 
 #'    ultrasound profile. 
-#'    See also \code{\link[morphonode]{simulate.us}} for ultrasound 
+#'    See also \code{\link[morphonode]{us.simulate}} for ultrasound 
 #'    data simulation.
 #'
 #' @references
@@ -1470,7 +1470,7 @@ printout <- function(u, x, y, E, p, mrs, k = 5, wmax = 1,
 #' @examples
 #' 
 #' # Create a simulated malignant ultrasound profile
-#' x <- new.profile(simulate.us(y = 1))
+#' x <- new.profile(us.simulate(y = 1))
 #' 
 #' # Lauch the Morhonode Predictive Model
 #' u <- us.predict(x)
