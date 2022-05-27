@@ -62,9 +62,9 @@ The MPM suite is composed by 4 modules:
   This module also suggests when the risk reach *moderate* (p > 0.23) or *high* levels (p > 0.29). These cutoffs reflect the optimal risk cutpoint between
   malignant and non-malignant subjects, by maximizing F1 score and Sensitivity/Specificity, respectively.
 - **Morphonode-DT**. Decision tree-based metastatic risk signature detection.
-  A high metastatic risk (HMR) signature is characterized by a high risk of single metastasis events, whereas
-  a metastatic signature (MET) is typical of malignancies showing multiple metastatic events.
-  Conversely, a low metastatic risk (LMR) signature is generally associated with non-malignant phenotypes.
-  Finally, a moderate malignancy risk (MMR) signature is the group with highes heterogeneity and requires RFC and RBM results to be characterized.
+  A *high metastatic risk* (HMR) signature is characterized by a high risk of single metastasis events, whereas
+  a *metastatic signature* (MET) is typical of malignancies showing multiple metastatic events.
+  Conversely, a *low metastatic risk* (LMR) signature is generally associated with non-malignant phenotypes.
+  Finally, a *moderate malignancy risk* (MMR) signature is the group with highest heterogeneity and requires RFC and RBM results to be characterized.
 - **Morphonode-SP**. Similarity prolfiling module. The module searches and ranks ultrasound profiles from the given (by default, the simulated) ultrasound
   features dataset. The default function is cosine similarity and the 5 top-similar profiles are shown to screen.
