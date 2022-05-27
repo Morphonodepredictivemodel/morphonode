@@ -22,6 +22,7 @@
 
 # -------------------------------------------------------------------- #
 
+
 #' @title Build a random forest classifier
 #'
 #' @description Wrapper for the \code{\link[CMA]{GenerateLearningsets}} 
