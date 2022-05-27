@@ -61,10 +61,10 @@ The results should look like the following:
 <br/><br/>
 The MPM suite is composed by 4 modules:
 
-- **Morphonode-RFC**. Random forest classification and prediction error (E) estimate.
+- **Morphonode-RFC**. Random forest classification (RFC) and prediction error (E) estimate.
   The predicted phenotype can be either malignant (y = 1) or non-malignant (y = 0).
   As a rule of thumb, if E is above or equal to 1, the prediction should be considered as unreliable.
-- **Morphonode-RBM**. Malignancy risk estimation by robust binomial modeling.
+- **Morphonode-RBM**. Malignancy risk estimation by robust binomial modeling (RBM).
   The RBM offers a continuous estimation of y (i.e., the malignancy risk), thus the higher the accordance with the RFC, the higher the prediction
   reliability.
   This module also suggests when the risk reach *moderate* (p > 0.23) or *high* levels (p > 0.29). These cutoffs reflect the optimal risk cutpoint between
