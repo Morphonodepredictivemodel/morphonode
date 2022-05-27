@@ -14,7 +14,7 @@ This will download the source code, build the morphonode tar.gz package, and ins
 <br/><br/>
 
 # Using the Morphonode Predictive Model suite
-<br/><br/>
+
 ## Morphonode Predictive Model basic usage
 
 The whole MPM suite can be launched in two very simple steps:
