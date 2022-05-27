@@ -309,7 +309,7 @@ imp.missing <- function(M, x = NULL, mode = NULL, ...) {
 #'    multiple metastases (i.e., the "MET" signature) that are hardly 
 #'    imputable from the other ultrasound variables.
 #'
-#' @importFrom imputeR impute
+#' @import imputeR
 #' @export
 #'
 #' @return An ultrasound profile with imputed missing values.
@@ -1418,10 +1418,10 @@ printout <- function(u, x, y, E, p, mrs, k = 5, wmax = 1,
 #'    the majority of similar profiles should have the same outcome (y) 
 #'    as the input one.
 #'
+#' @import imputeR
 #' @import randomForest
 #' @importFrom stats cor
 #' @importFrom lsa cosine
-#' @importFrom imputeR impute
 #' @export
 #'
 #' @return A list of 5 objects:
