@@ -7,6 +7,20 @@ The latest development version can be installed into an **R** environment from *
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fernandoPalluzzi/SEMgraph")
+devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
+# Using Morphonode Predictive Model suite
+
+## Basic usage
+
+The whole MPM suite can be launched in two very simple steps:
+
+- Defining the ultrasound profile (in this example we will use a simulated malignant profile)
+``` r
+x <- new.profile(simulate.us(y = 1))
+```
+- Launching the model!
+``` r
+mpm <- us.predict(x)
+```
