@@ -220,7 +220,7 @@ f2n.df <- function(x) {
 #'    "con" (continuous variables).
 #' @param ... Currently ignored.
 #'
-#' @importFrom imputeR impute
+#' @import imputeR
 #' @export
 #'
 #' @return A data.frame with imputed missing values.
@@ -236,13 +236,13 @@ f2n.df <- function(x) {
 #' missing <- matrix(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, NA, 2, NA, 2, 3, NA,
 #'                      6.4, 2.1, 1, 0, 0, 0, 0, 1, NA, 2, NA, 1, 1, NA),
 #'                   nrow = 2, byrow = TRUE)
-#' colnames(missing) <- colnames(data)
+#' colnames(missing) <- colnames(mpm.us[, 2:15])
 #' 
 #' # Defining categorical subset
-#' data.cat <- data.frame(apply(data[, 3:14], 2, factor))
+#' data.cat <- data.frame(apply(mpm.us[, 2:15], 2, factor))
 #' 
 #' # Imputing missing values
-#' data.cat <- imp.missing(data.cat, x = missing[, 3:14], mode = "cat")
+#' data.cat <- imp.missing(data.cat, x = missing, mode = "cat")
 #' print(tail(data.cat))
 #'
 imp.missing <- function(M, x = NULL, mode = NULL, ...) {
