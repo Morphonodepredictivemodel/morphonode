@@ -10,7 +10,8 @@ The latest development version can be installed into an **R** environment from *
 devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
-# Using Morphonode Predictive Model suite
+
+# Using the Morphonode Predictive Model suite
 
 ## Basic usage
 
