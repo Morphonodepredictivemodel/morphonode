@@ -23,6 +23,7 @@ devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
 This will download the source code, build the morphonode tar.gz package, and install it locally.
+
 &nbsp;
 
 # Using the Morphonode Predictive Model suite
