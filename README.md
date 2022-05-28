@@ -93,9 +93,9 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 2. **Similarity coefficient** (w). By default, cosine similarity is used.
 3. **Short axis**: length in millimeters.
 4. **Cortical thickness**: thickness in millimeters.
-5. **Nodal core sign** (hilum): *absent* (0, metastatic trait), *present* (1).
-6. **Perinodal hyperechogenic ring**: *absent* (0), *present* (1, metastatic trait).
-7. **Cortical interruption**: *absent* (0), *present* (1, metastatic trait).
+5. **Nodal core sign** (hilum): *absent* (0, **metastatic trait**), *present* (1).
+6. **Perinodal hyperechogenic ring**: *absent* (0), *present* (1, **metastatic trait**).
+7. **Cortical interruption**: *absent* (0), *present* (1, **metastatic trait**).
 8. **Echogenicity**: *homogeneous* (0), *inhomogeneous* (1).
 9. **Focal intranodal deposit**: *absent* (0), *hyperechoic* (1), *anaechoic, cystic areas* (2), *both* (3).
 10. **Vascular flow localization**: *non-vascularized* (0), *central* (1), *peripheral* (2), *extranodal* (3), *combined* (4).
@@ -107,6 +107,8 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 16. **Color score**: ordinal variable from 1 to 5.
 17. **Outcome**: *non-malignant* (0), *malignant* (1).
 18. **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
+
+Ulrasound profiles showing one or more values marked as **metastatic trait** determine the **MET signature** (very high risk of multiple metastases).
 
 ## Defining an ultrasound profile
 
@@ -167,7 +169,7 @@ Difference after iteration 2 is 0
 # ------------------------------------------------------------------------------------------- #
 ```
 
-
+While missing values are generally not a problem, the imputation is currently disabled (so missing values are not allowed) for **short axis** and **cortical thickness**.
 
 
 
