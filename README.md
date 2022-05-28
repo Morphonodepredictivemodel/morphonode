@@ -174,3 +174,55 @@ While missing values are generally not a problem, the imputation is currently di
 ### Interactive input
 
 If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical and allow missing values. Pressing *enter* without typing any value will introduce a missing. Each feature comes with a brief explanation of the allowed values. If an invalid value is given, an error will be raised.
+
+## MPM output object
+
+Besides the displayed output, the MPM output (a list of 5 objects) shows some more details about the decisional process:
+
+```
+> mpm
+$prediction
+$prediction$y.hat
+[1] 1
+
+$prediction$decisions
+[1] 1 1 1 1 1
+Levels: 0 1
+
+$prediction$oob.err
+  RFC1.OOB   RFC2.OOB   RFC3.OOB   RFC4.OOB   RFC5.OOB 
+0.05533597 0.04986877 0.04749340 0.05710491 0.05526316 
+
+
+$E
+[1] 0.03281627
+
+$p
+     9491 
+0.9161561 
+
+$signature
+[1] "HMR"
+
+$profiles
+      ID shortAxis cortical hilum inflammatoryStroma extracapsularSpread
+1561 722      9.20 6.400000     1                  0                   0
+2610 766      7.00 3.692477     1                  0                   0
+181  314     11.50 6.400000     1                  0                   0
+820  894     10.89 7.841718     1                  0                   1
+1131 434     11.90 6.300000     1                  0                   0
+     ecostructure FID VFL corticalThickening vascularPattern CMID shape
+1561            0   0   2                  2               2    2     1
+2610            0   0   1                  1               1    2     1
+181             0   0   1                  1               1    3     1
+820             0   1   2                  3               3    4     2
+1131            0   1   1                  2               3    2     1
+     grouping colorScore y signature        E         R        D
+1561        1          1 1       HMR 0.016928 0.9927380 1.284523
+2610        1          1 0       MMR 0.009800 0.9921939 4.218907
+181         1          2 1       MMR 0.014112 0.9888209 2.063977
+820         2          2 1       MET 0.006272 0.9854236 2.677498
+1131        2          2 1       HMR 0.004232 0.9853030 2.147091
+```
+
+The `prediction` object contains the overall classification (`y.hat`), the decision taken by every of the 5 RFCs in the ensemble (`decisions`), and the out-of-bag error of each RFC (`oob.err`). Objects `E`, `p`, and `signature` contain the estimated RFC prediction error, the RBM malignancy risk estimate, and the computed metastatic risk signature (MRS), respectively. Finally, the `profiles` object shows the detailed characteristics of the k top-similar profiles, including: ultrasound features, observed phenotype, associated MRS (signature), prediction error estimate (E), the similarity with the input profile (R), the euclidean distance to the input profile (D).
