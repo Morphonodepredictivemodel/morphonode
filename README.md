@@ -173,5 +173,4 @@ While missing values are generally not a problem, the imputation is currently di
 
 ### Interactive input
 
-If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical. Pressing *enter* without typing any value will introduce a missing.
-Each feature comes with a brief explanation of the allowed values. If an invalid value is given, an error will be raised.
+If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical and allow missing values. Pressing *enter* without typing any value will introduce a missing. Each feature comes with a brief explanation of the allowed values. If an invalid value is given, an error will be raised.
