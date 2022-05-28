@@ -118,7 +118,7 @@ A new profile can be initialized manually, including each ultrasound value in th
 x <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, -1, 2, 2, 3, -1, -1, -1))
 ```
 
-As shown in the coden above, the object `x` contains -1 values, corresponding to missing data:
+As shown in the code above, the object `x` contains -1 values, corresponding to missing data:
 
 ```
 > x
