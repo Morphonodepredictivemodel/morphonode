@@ -4,7 +4,7 @@
 \alias{similarity}
 \title{Compute different similarity coefficients}
 \usage{
-similarity(x, y, f = "cosine", ceiling = 1e+07)
+similarity(x, y, f = "cosine", ceiling = 1e+07, ...)
 }
 \arguments{
 \item{x}{A numeric vector.}
@@ -31,10 +31,10 @@ Compute the similarity between two vectors.
 \examples{
 
 # Sample two random ultrasound profiles from the default dataset
-x <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
-x <- as.matrix(x[, 2:15])
-y <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
-y <- as.matrix(y[, 2:15])
+x <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
+x <- as.numeric(x[, 2:15])
+y <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
+y <- as.numeric(y[, 2:15])
 
 # Compute the cosine similarity
 r <- similarity(x, y)

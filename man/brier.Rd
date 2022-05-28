@@ -4,7 +4,7 @@
 \alias{brier}
 \title{Compute Brier scores}
 \usage{
-brier(data, status, k = 5, method = "CV")
+brier(data, status, k = 5, method = "CV", ...)
 }
 \arguments{
 \item{data}{An (n, m) matrix or data.frame with no outcome attribute.}
@@ -30,7 +30,7 @@ Compute Brier scores for a given dataset.
 # Extract a subset of 300 subjects and an outcome vector of length 30 
 # from the default simulated dataset
 
-x <- sample(mpm.us, 300, replace = FALSE, prob = NULL)
+x <- mosaic::sample(mpm.us, 300, replace = FALSE, prob = NULL)
 y <- x$y
 x <- x[, 2:15]
 print(dim(x))

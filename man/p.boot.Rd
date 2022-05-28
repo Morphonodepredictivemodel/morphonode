@@ -4,7 +4,7 @@
 \alias{p.boot}
 \title{Bootstrap confidence interfals of classifier performances}
 \usage{
-p.boot(x, rep = 5000, ci.method = "bca", formula = "f1")
+p.boot(x, rep = 5000, ci.method = "bca", formula = "f1", ...)
 }
 \arguments{
 \item{x}{An data.frame of n rows (subjects) and 2 columns: the first 

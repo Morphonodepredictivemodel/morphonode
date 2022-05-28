@@ -10,7 +10,8 @@ us.simulate(
   y = NULL,
   signature = NULL,
   features = 2:15,
-  header = NULL
+  header = NULL,
+  ...
 )
 }
 \arguments{

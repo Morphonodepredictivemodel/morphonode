@@ -30,7 +30,7 @@
 #'    model (RBM). This dataset was generated as a 4-fold expansion of 
 #'    the original ultrasound feature dataset of 237 groin samples (75 
 #'    malignant and 162 non-malignant) from Fragomeni et al. (2022), 
-#'    using the morphonode function \code{\link[morphonode]{simulate.us}}.
+#'    using the morphonode function \code{\link[morphonode]{us.simulate}}.
 #' @name mpm.us
 #' @usage mpm.us
 #' @docType data

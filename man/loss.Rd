@@ -4,7 +4,7 @@
 \alias{loss}
 \title{Loss function}
 \usage{
-loss(p, y, method = "log")
+loss(p, y, method = "log", ...)
 }
 \arguments{
 \item{p}{A vector of predicted outcome values.}

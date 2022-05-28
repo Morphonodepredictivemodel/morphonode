@@ -12,7 +12,8 @@ set.missing(
   cat = 3:14,
   missing = -1,
   na = NA,
-  asNumeric = TRUE
+  asNumeric = TRUE,
+  ...
 )
 }
 \arguments{

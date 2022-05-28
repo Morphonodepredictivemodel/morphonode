@@ -20,7 +20,8 @@ dichotomize(
   shape = c(3),
   cs = 3,
   grouping = c(2, 3),
-  asFactor = FALSE
+  asFactor = FALSE,
+  ...
 )
 }
 \arguments{

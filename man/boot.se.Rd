@@ -4,7 +4,7 @@
 \alias{boot.se}
 \title{Compute bootstrap standard errors}
 \usage{
-boot.se(fit, boot, probs = c(0.025, 0.975), z0 = 1.96, b0 = 0)
+boot.se(fit, boot, probs = c(0.025, 0.975), z0 = 1.96, b0 = 0, ...)
 }
 \arguments{
 \item{fit}{An object of class \code{glm} or \code{lm}.}
@@ -54,7 +54,8 @@ fit <- glm(model, data = x, family = "binomial")
 
 # Binomial model fitting
 n.reps <- 100
-boot <- do(n.reps) * coef(glm(model, data = resample(x), family = "binomial"))
+boot <- mosaic::do(n.reps) * coef(glm(model, data = mosaic::resample(x),
+                                      family = "binomial"))
 
 # Bootstrap SE calculation
 SE <- boot.se(fit, boot)

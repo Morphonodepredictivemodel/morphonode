@@ -22,7 +22,8 @@ set.rbmdata(
   cs = 3,
   grouping = c(2, 3),
   ref = NULL,
-  asFactor = FALSE
+  asFactor = FALSE,
+  ...
 )
 }
 \arguments{

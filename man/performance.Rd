@@ -4,7 +4,7 @@
 \alias{performance}
 \title{Predictor performance calculation}
 \usage{
-performance(obs = NULL, pred = NULL, C = NULL, y = "0,1")
+performance(obs = NULL, pred = NULL, C = NULL, y = "0,1", ...)
 }
 \arguments{
 \item{obs}{A vector of observed values.}

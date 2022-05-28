@@ -4,7 +4,7 @@
 \alias{euclidean}
 \title{Euclidean distance}
 \usage{
-euclidean(x, y)
+euclidean(x, y, ...)
 }
 \arguments{
 \item{x}{A numeric vector.}
@@ -22,9 +22,9 @@ Compute the euclidean distance between two vectors.
 \examples{
 
 # Sample two random ultrasound profiles from the default dataset
-x <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+x <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 x <- as.matrix(x[, 2:15])
-y <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+y <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 y <- as.matrix(y[, 2:15])
 
 # Compute the euclidean distance
