@@ -13,7 +13,7 @@ install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
 ```
 &nbsp;
 
-## Installation from source through the R package `devtools`
+## Installation through the R package `devtools`
 
 The latest development version can be installed through **GitHub** from any **R** environment:
 
