@@ -46,7 +46,7 @@
 #' \enumerate{
 #' \item "coef", a data.frame reporting bootstrap-based estimations:
 #'    ultrasound feature (Variable), log(odds ratio) (Estimate), 
-#'    bootstrap standare errors (se.boot), confidence interval lower 
+#'    bootstrap standard errors (se.boot), confidence interval lower 
 #'    bound (lower), confidence interval upper bound (upper), 
 #'    confidence level (conf.level), bootstrap estimation method (method), 
 #'    z-score (z), 2-sided p-value (P);
