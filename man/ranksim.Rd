@@ -14,7 +14,8 @@ ranksim(
   d = c(2:6, 9, 10, 11),
   signature = NULL,
   check.data = TRUE,
-  orderbyDistance = FALSE
+  orderbyDistance = FALSE,
+  ...
 )
 }
 \arguments{

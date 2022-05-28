@@ -4,7 +4,7 @@
 \alias{vpart}
 \title{Data partitioning utility}
 \usage{
-vpart(data, p, shuffle = FALSE)
+vpart(data, p, shuffle = FALSE, ...)
 }
 \arguments{
 \item{data}{An input data.frame.}
@@ -13,6 +13,8 @@ vpart(data, p, shuffle = FALSE)
 
 \item{shuffle}{A logical value. If TRUE, the input rows are randomly 
 shuffled before data partitioning.}
+
+\item{...}{Currently ignored.}
 }
 \value{
 A list of 2 data.frames:
@@ -29,7 +31,7 @@ Extract a random partition from an input dataset.
 # Extract a subset of 300 subjects and an outcome vector of length 30 
 # from the default simulated dataset
 
-x <- sample(mpm.us, 300, replace = FALSE, prob = NULL)
+x <- mosaic::sample(mpm.us, 300, replace = FALSE, prob = NULL)
 
 # Data partitioning
 

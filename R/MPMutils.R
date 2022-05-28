@@ -60,7 +60,7 @@
 #' # Extract a subset of 300 subjects and an outcome vector of length 30 
 #' # from the default simulated dataset
 #' 
-#' x <- sample(mpm.us, 300, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 300, replace = FALSE, prob = NULL)
 #' y <- x$y
 #' x <- x[, 2:15]
 #' dim(x)
@@ -76,7 +76,7 @@
 #' P <- performance(obs = CV1@y, pred = CV1@yhat)
 #' print(P)
 #'
-rfc <- function(data, status, k = 5, method = "CV") {
+rfc <- function(data, status, k = 5, method = "CV", ...) {
 	
 	L <- GenerateLearningsets(n = nrow(data), status,
 							  method = method,
@@ -127,7 +127,7 @@ rfc <- function(data, status, k = 5, method = "CV") {
 #' # Extract a subset of 300 subjects and an outcome vector of length 30 
 #' # from the default simulated dataset
 #' 
-#' x <- sample(mpm.us, 300, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 300, replace = FALSE, prob = NULL)
 #' y <- x$y
 #' x <- x[, 2:15]
 #' print(dim(x))
@@ -137,7 +137,7 @@ rfc <- function(data, status, k = 5, method = "CV") {
 #' E <- brier(x, y)
 #' print(quantile(E))
 #'
-brier <- function(data, status, k = 5, method = "CV") {
+brier <- function(data, status, k = 5, method = "CV", ...) {
 	C <- rfc(data = data, status = status, k = k, method = method)
 	E <- evaluation(C, scheme = "observationwise",
 	                   measure = "brier score")@score
@@ -206,12 +206,14 @@ brier <- function(data, status, k = 5, method = "CV") {
 #' 
 #' print(P)
 #'
-loss <- function(p, y, method = "log") {
+loss <- function(p, y, method = "log", ...) {
 	if (method == "log") {
-		if (p == 1) {
-			p <- 0.9999
-		} else if (p == 0) {
-			p <- 0.0001
+		for (i in 1:length(p)) {
+			if (p[i] == 1) {
+				p[i] <- 0.9999
+			} else if (p[i] == 0) {
+				p[i] <- 0.0001
+			}
 		}
 		L = -1*(y*log(p) + (1 - y)*log(1 - p))
 		C = sum(L)/length(p)
@@ -284,7 +286,7 @@ loss <- function(p, y, method = "log") {
 #' # Extract a subset of 500 subjects and an outcome vector of length 30 
 #' # from the default simulated dataset
 #' 
-#' x <- sample(mpm.us, 500, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
 #' x <- x[, 2:16]
 #' model <- formula("y ~ .")
 #' 
@@ -307,7 +309,7 @@ loss <- function(p, y, method = "log") {
 #' 
 #' }
 #'
-buildPredictor <- function(model, data, n = 10000, m = 3, vset = NULL) {
+buildPredictor <- function(model, data, n = 10000, m = 3, vset = NULL, ...) {
 	
 	RFC <- randomForest(model, data = data,
 						ntree = n,
@@ -332,6 +334,7 @@ buildPredictor <- function(model, data, n = 10000, m = 3, vset = NULL) {
 #' @param p Proportion of rows to be extracted from the input dataset.
 #' @param shuffle A logical value. If TRUE, the input rows are randomly 
 #'    shuffled before data partitioning.
+#' @param ... Currently ignored.
 #'
 #' @return A list of 2 data.frames:
 #' \enumerate{
@@ -350,7 +353,7 @@ buildPredictor <- function(model, data, n = 10000, m = 3, vset = NULL) {
 #' # Extract a subset of 300 subjects and an outcome vector of length 30 
 #' # from the default simulated dataset
 #' 
-#' x <- sample(mpm.us, 300, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 300, replace = FALSE, prob = NULL)
 #' 
 #' # Data partitioning
 #' 
@@ -358,11 +361,11 @@ buildPredictor <- function(model, data, n = 10000, m = 3, vset = NULL) {
 #' print(dim(x$training.set))
 #' print(dim(x$validation.set))
 #'
-vpart <- function(data, p, shuffle = FALSE) {
+vpart <- function(data, p, shuffle = FALSE, ...) {
 	if (shuffle) {
-		data <- data[sample(1:nrow(data), replace = FALSE),]
+		data <- data[mosaic::sample(1:nrow(data), replace = FALSE),]
 	}
-	j <- sample(nrow(data), size = p*nrow(data), replace = FALSE)
+	j <- mosaic::sample(nrow(data), size = p*nrow(data), replace = FALSE)
 	X <- data[j,]
 	V <- data[-j,]
 	return(list(training.set = X, validation.set = V))
@@ -417,7 +420,7 @@ vpart <- function(data, p, shuffle = FALSE) {
 #' print(rbm$F1)
 #' print(mpm.rfc$performance$F1)
 #'
-performance <- function(obs = NULL, pred = NULL, C = NULL, y = "0,1") {
+performance <- function(obs = NULL, pred = NULL, C = NULL, y = "0,1", ...) {
 	# Confusion Table
 	if (class(C)[1] != "matrix" & class(C)[1] != "table") {
 		C <- table(obs, pred)
@@ -472,16 +475,16 @@ performance <- function(obs = NULL, pred = NULL, C = NULL, y = "0,1") {
 #' @examples
 #' 
 #' # Sample two random ultrasound profiles from the default dataset
-#' x <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 #' x <- as.matrix(x[, 2:15])
-#' y <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' y <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 #' y <- as.matrix(y[, 2:15])
 #' 
 #' # Compute the euclidean distance
 #' d <- euclidean(x, y)
 #' print(d)
 #'
-euclidean <- function(x, y) {
+euclidean <- function(x, y, ...) {
 	return(sqrt(sum((y - x)^2)))
 }
 
@@ -505,16 +508,16 @@ euclidean <- function(x, y) {
 #' @examples
 #' 
 #' # Sample two random ultrasound profiles from the default dataset
-#' x <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 #' x <- as.matrix(dichotomize(x[, 2:15]))
-#' y <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' y <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
 #' y <- as.matrix(dichotomize(y[, 2:15]))
 #' 
 #' # Compute the euclidean distance
 #' r <- jaccard(x, y)
 #' print(r)
 #'
-jaccard <- function(x, y) {
+jaccard <- function(x, y, ...) {
 	return(sum(1*(y == x))/length(x))
 }
 
@@ -553,16 +556,16 @@ jaccard <- function(x, y) {
 #' @examples
 #' 
 #' # Sample two random ultrasound profiles from the default dataset
-#' x <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
-#' x <- as.matrix(x[, 2:15])
-#' y <- sample(mpm.us, 1, replace = FALSE, prob = NULL)
-#' y <- as.matrix(y[, 2:15])
+#' x <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' x <- as.numeric(x[, 2:15])
+#' y <- mosaic::sample(mpm.us, 1, replace = FALSE, prob = NULL)
+#' y <- as.numeric(y[, 2:15])
 #' 
 #' # Compute the cosine similarity
 #' r <- similarity(x, y)
 #' print(r)
 #'
-similarity <- function(x, y, f = "cosine", ceiling = 1E+07) {
+similarity <- function(x, y, f = "cosine", ceiling = 1E+07, ...) {
 	if (f == "cosine") {
 		r <- lsa::cosine(x, y)
 	} else if (f == "jaccard") {
@@ -633,13 +636,14 @@ similarity <- function(x, y, f = "cosine", ceiling = 1E+07) {
 #' 
 #' # Binomial model fitting
 #' n.reps <- 100
-#' boot <- do(n.reps) * coef(glm(model, data = resample(x), family = "binomial"))
+#' boot <- mosaic::do(n.reps) * coef(glm(model, data = mosaic::resample(x),
+#'                                       family = "binomial"))
 #' 
 #' # Bootstrap SE calculation
 #' SE <- boot.se(fit, boot)
 #' print(SE)
 #'
-boot.se <- function(fit, boot, probs = c(0.025, 0.975), z0 = 1.96, b0 = 0) {
+boot.se <- function(fit, boot, probs = c(0.025, 0.975), z0 = 1.96, b0 = 0, ...) {
 	conf.level <- probs[2] - probs[1]
 	b0 <- summary(fit)$coefficients
 	coef <- NULL
@@ -958,7 +962,7 @@ p.fnc <- function(x, j, real = NULL) {
 #' 
 #' }
 #'
-p.boot <- function(x, rep = 5000, ci.method = "bca", formula = "f1") {
+p.boot <- function(x, rep = 5000, ci.method = "bca", formula = "f1", ...) {
 	if (formula == "f1") {
 		R <- boot(data = x, statistic = p.f1, R = rep)
 	} else if (formula == "accuracy") {
@@ -993,7 +997,7 @@ p.boot <- function(x, rep = 5000, ci.method = "bca", formula = "f1") {
 new.entry <- function(x, m) {
 	v <- vector()
 	n <- nrow(x)
-	j <- sample(1:n, m, replace = FALSE)
+	j <- mosaic::sample(1:n, m, replace = FALSE)
 	for (k in 1:m) {
 		v <- c(v, x[j[k], k])
 	}
@@ -1052,7 +1056,7 @@ new.entry <- function(x, m) {
 #' print(u.met)
 #'
 us.simulate <- function(reps = 1, x = mpm.us, y = NULL, signature = NULL,
-                        features = 2:15, header = NULL) {
+                        features = 2:15, header = NULL, ...) {
 	if (!is.null(x)) {
 		if (!is.null(y)) x <- x[x$y == y,]
 		if (!is.null(signature)) x <- x[x$signature == signature,]

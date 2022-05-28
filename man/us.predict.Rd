@@ -19,7 +19,8 @@ us.predict(
   b = 0.055,
   rho = 0.9,
   wmax = 1,
-  verbose = TRUE
+  verbose = TRUE,
+  ...
 )
 }
 \arguments{

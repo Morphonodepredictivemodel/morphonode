@@ -21,7 +21,8 @@ uss(
   cmid = c(2, 3, 4),
   shape = c(3),
   cs = 3,
-  grouping = c(2, 3)
+  grouping = c(2, 3),
+  ...
 )
 }
 \arguments{
@@ -143,7 +144,7 @@ The core method of the Morphonode-DT model is implemented
 \examples{
 
 # Extract 5 random subjects from the default simulated dataset
-x <- sample(mpm.us[, 2:15], 5, replace = FALSE, prob = NULL)
+x <- mosaic::sample(mpm.us[, 2:15], 5, replace = FALSE, prob = NULL)
 print(x)
 
 # Assign a metastatic risk signature to each subject in the dataset

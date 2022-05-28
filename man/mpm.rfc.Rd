@@ -51,7 +51,7 @@ RFC ensemble of 5 classifiers, based on 948 simulated
 \examples{
 
 # Create a simulated malignant ultrasound profile
-x <- new.profile(simulate.us(y = 1))
+x <- new.profile(us.simulate(y = 1))
 
 # Lauch the Morhonode Predictive Model
 u <- us.predict(x)

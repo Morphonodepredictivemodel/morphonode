@@ -230,7 +230,7 @@ f2n.df <- function(x) {
 #' @examples
 #' 
 #' # Sample 30 subjects from the morphonode simulated dataset
-#' data <- sample(mpm.us, 30, replace = FALSE, prob = NULL)[, 2:15]
+#' data <- mosaic::sample(mpm.us, 30, replace = FALSE, prob = NULL)[, 2:15]
 #' 
 #' # Entries with missing values
 #' missing <- matrix(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, NA, 2, NA, 2, 3, NA,
@@ -336,7 +336,7 @@ imp.missing <- function(M, x = NULL, mode = NULL, ...) {
 #'
 set.missing <- function(v, ref = NULL, levels = NULL, con = 1:2,
                         cat = 3:14, missing = -1, na = NA,
-                        asNumeric = TRUE) {
+                        asNumeric = TRUE, ...) {
 	if (length(v$missing) > 0) {
 		if (!is.null(ref)) {
 			v$ultrasound[v$ultrasound == missing] <- na
@@ -431,7 +431,7 @@ set.missing <- function(v, ref = NULL, levels = NULL, con = 1:2,
 #' u <- set.rfcdata(x, ref = mpm.us[, 2:15], levels = mpm.levels)
 #' print(u)
 #'
-set.rfcdata <- function(u, levels = NULL, ref = NULL) {
+set.rfcdata <- function(u, levels = NULL, ref = NULL, ...) {
 	if (length(u$missing) > 0) {
 		suppressMessages(u <- set.missing(u, levels = levels, ref = ref))
 	} else {
@@ -538,7 +538,7 @@ set.rbmdata <- function(u, levels, short = 8, cortical = 2,
                         vp = c(1, 2, 3), vfl = c(2, 3, 4),
                         ct = c(2), fid = c(1, 2, 3), cmid = c(2, 3, 4),
                         shape = c(3), cs = 3, grouping = c(2, 3),
-                        ref = NULL, asFactor = FALSE) {
+                        ref = NULL, asFactor = FALSE, ...) {
 	if (length(u$missing) > 0) {
 		suppressMessages(u <- set.missing(u, levels = levels, ref = ref))
 	} else {
@@ -655,7 +655,7 @@ dichotomize <- function(x, short = 8, cortical = 2,
                         vp = c(1, 2, 3), vfl = c(2, 3, 4),
                         ct = c(2), fid = c(1, 2, 3), cmid = c(2, 3, 4),
                         shape = c(3), cs = 3, grouping = c(2, 3),
-                        asFactor = FALSE) {
+                        asFactor = FALSE, ...) {
 	
 	if (asFactor) {
 		a <- "factor("
@@ -810,7 +810,7 @@ dichotomize <- function(x, short = 8, cortical = 2,
 #' @examples
 #' 
 #' # Extract 5 random subjects from the default simulated dataset
-#' x <- sample(mpm.us[, 2:15], 5, replace = FALSE, prob = NULL)
+#' x <- mosaic::sample(mpm.us[, 2:15], 5, replace = FALSE, prob = NULL)
 #' print(x)
 #' 
 #' # Assign a metastatic risk signature to each subject in the dataset
@@ -822,7 +822,7 @@ uss <- function(x, dichotomous = FALSE, dct = 2,
                 short = 8, cortical = 2, ist = 1, ecs = 1, hab = 0,
                 eco = 1, vp = c(1, 2, 3), vfl = c(2, 3, 4),
                 ct = c(2), fid = c(1, 2, 3), cmid = c(2, 3, 4),
-                shape = c(3), cs = 3, grouping = c(2, 3)) {
+                shape = c(3), cs = 3, grouping = c(2, 3), ...) {
 	
 	if (!dichotomous) x <- dichotomize(x, short, cortical, ist, ecs,
 	                                   hab, eco, vp, vfl, ct, fid,
@@ -963,7 +963,7 @@ uss <- function(x, dichotomous = FALSE, dct = 2,
 #' print(sim)
 #'
 topsim <- function(v, x = mpm.us, f = "cosine", k = 5, p = 0.7,
-                   features = 2:15, check.data = TRUE) {
+                   features = 2:15, check.data = TRUE, ...) {
 	if (check.data) v <- f2n(v)
 	x$R <- apply(x[, features], 1, function(w) similarity(v, w, f = f))
 	x <- x[order(x$R, decreasing = TRUE),]
@@ -1072,7 +1072,7 @@ topsim <- function(v, x = mpm.us, f = "cosine", k = 5, p = 0.7,
 ranksim <- function(u, v = NULL, x = mpm.us, k = 5, p = 0.7,
                     j = 2:15, d = c(2:6, 9, 10, 11),
                     signature = NULL, check.data = TRUE,
-                    orderbyDistance = FALSE) {
+                    orderbyDistance = FALSE, ...) {
 	if (!is.null(signature)) {
 		x <- x[x$signature == signature,]
 	}
@@ -1166,7 +1166,7 @@ ranksim <- function(u, v = NULL, x = mpm.us, k = 5, p = 0.7,
 #' P <- rfc.predict(u$ultrasound, rfc = mpm.rfc$rfc)
 #' print(P)
 #'
-rfc.predict <- function(u, rfc, recover = TRUE) {
+rfc.predict <- function(u, rfc, recover = TRUE, ...) {
 	p <- factor(, levels = c(0, 1))
 	for (j in 1:length(rfc)) {
 		p <- c(p, predict(rfc[[j]], u))
@@ -1479,7 +1479,7 @@ us.predict <- function(x, f = "cosine", levels = NULL, ref = NULL,
                        rfc = NULL, rbm = NULL, k = 5, features = 2:15,
                        orderbyDistance = FALSE, uncertainty = "loss",
                        b0 = c(0, 0.028, 0.013), b = 0.055, rho = 0.9,
-                       wmax = 1, verbose = TRUE) {
+                       wmax = 1, verbose = TRUE, ...) {
 	
 	if (is.null(levels)) levels <- mpm.levels
 	if (is.null(ref)) ref <- mpm.us[, 2:15]

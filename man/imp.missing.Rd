@@ -28,19 +28,19 @@ Wrapper for the \code{imputeR} function
 \examples{
 
 # Sample 30 subjects from the morphonode simulated dataset
-data <- sample(mpm.us, 30, replace = FALSE, prob = NULL)[, 2:15]
+data <- mosaic::sample(mpm.us, 30, replace = FALSE, prob = NULL)[, 2:15]
 
 # Entries with missing values
 missing <- matrix(c(10.0, 6.3, 1, 0, 0, 0, 0, 1, NA, 2, NA, 2, 3, NA,
                      6.4, 2.1, 1, 0, 0, 0, 0, 1, NA, 2, NA, 1, 1, NA),
                   nrow = 2, byrow = TRUE)
-colnames(missing) <- colnames(data)
+colnames(missing) <- colnames(mpm.us[, 2:15])
 
 # Defining categorical subset
-data.cat <- data.frame(apply(data[, 3:14], 2, factor))
+data.cat <- data.frame(apply(mpm.us[, 2:15], 2, factor))
 
 # Imputing missing values
-data.cat <- imp.missing(data.cat, x = missing[, 3:14], mode = "cat")
+data.cat <- imp.missing(data.cat, x = missing, mode = "cat")
 print(tail(data.cat))
 
 }

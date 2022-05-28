@@ -4,7 +4,7 @@
 \alias{buildPredictor}
 \title{Build a randomForest object}
 \usage{
-buildPredictor(model, data, n = 10000, m = 3, vset = NULL)
+buildPredictor(model, data, n = 10000, m = 3, vset = NULL, ...)
 }
 \arguments{
 \item{model}{An R formula of shape y ~ x1 + x2 + ... + xn.
@@ -52,7 +52,7 @@ This is the class of RFC used in the
 # Extract a subset of 500 subjects and an outcome vector of length 30 
 # from the default simulated dataset
 
-x <- sample(mpm.us, 500, replace = FALSE, prob = NULL)
+x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
 x <- x[, 2:16]
 model <- formula("y ~ .")
 

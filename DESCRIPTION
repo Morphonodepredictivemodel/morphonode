@@ -1,6 +1,5 @@
 Package: morphonode
-Title: Morphonode Predictive Model: ultrasound signatures detection and
-       malignancy prediction in vulvar cancer.
+Title: The Morphonode Predictive Model for ultrasound signatures detection and malignancy prediction in vulvar cancer
 Version: 1.0.0
 Date: 2022-05-23
 Maintainer: Fernando Palluzzi <fernando.palluzzi@gmail.com>
@@ -26,6 +25,7 @@ Imports: Biobase (>= 2.52.0), BiocGenerics (>= 0.38.0), boot (>= 1.3-25),
          mosaicData (>= 0.20.2), randomForest (>= 4.6-14)
 License: GPL-3
 LazyData: true
+LazyDataCompression: xz
 Encoding: UTF-8
 NeedsCompilation: no
 RoxygenNote: 7.1.2

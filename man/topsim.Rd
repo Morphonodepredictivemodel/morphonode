@@ -11,7 +11,8 @@ topsim(
   k = 5,
   p = 0.7,
   features = 2:15,
-  check.data = TRUE
+  check.data = TRUE,
+  ...
 )
 }
 \arguments{
