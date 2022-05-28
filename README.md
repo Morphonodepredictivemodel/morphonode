@@ -169,7 +169,5 @@ Difference after iteration 2 is 0
 # ------------------------------------------------------------------------------------------- #
 ```
 
-While missing values are generally not a problem, the imputation is currently disabled (so missing values are not allowed) for **short axis** and **cortical thickness**. This is due to the extremely high importance of these two features for a reliable prediction. Although possible, imputation is strongly discouraged for the metastatic markers **nodal core sign**, **perinodal hyperechogenic ring**, and **cortical interruption**. These values are fundamental to detect multiple metastases (MET signature) profiles, and hardly imputable from the other features in the input profile. As a general warning, each imputed value comes with an imputation error. Although RFCs and the whole modular structure of the MPM is robust to missing data, an eccess of missing values might sensibly increase prediction entropy.
-
-
+While missing values are generally not a problem, the imputation is currently disabled (so missing values are not allowed) for **short axis** and **cortical thickness**. This is due to the extremely high importance of these two features for a reliable prediction. Although possible, imputation is strongly discouraged for the metastatic markers **nodal core sign**, **perinodal hyperechogenic ring**, and **cortical interruption**. These values are fundamental to detect multiple metastases (MET signature) profiles, and hardly imputable from the other features in the input profile. As a general warning, each imputed value comes with an imputation error. Although RFCs, and the whole modular structure of the MPM, are robust to missing data, an eccess of missing values might sensibly increase prediction entropy.
 
