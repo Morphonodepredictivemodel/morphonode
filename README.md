@@ -108,7 +108,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 17. **Outcome**: *non-malignant* (0), *malignant* (1).
 18. **Metastatic risk signature**: LMR (low risk), MMR (moderate risk), HMR (high risk, single metastasis), MET (metastatic, multiple metastases).
 
-Ulrasound profiles showing one or more values marked as **metastatic trait** determine the **MET signature** (very high risk of multiple metastases).
+Ulrasound profiles showing one or more values marked as "**metastatic trait**" determine the **MET signature** (very high risk of multiple metastases).
 
 ## Defining an ultrasound profile
 
