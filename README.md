@@ -96,7 +96,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 5. **Nodal core sign** (hilum): *absent* (0, **metastatic trait**), *present* (1).
 6. **Perinodal hyperechogenic ring** (inflammatory stroma): *absent* (0), *present* (1, **metastatic trait**).
 7. **Cortical interruption** (extracapsular spread): *absent* (0), *present* (1, **metastatic trait**).
-8. **Echogenicity**: *homogeneous* (0), *inhomogeneous* (1).
+8. **Echogenicity** (echostructure): *homogeneous* (0), *inhomogeneous* (1).
 9. **Focal intranodal deposit**: *absent* (0), *hyperechoic* (1), *anaechoic, cystic areas* (2), *both* (3).
 10. **Vascular flow localization**: *non-vascularized* (0), *central* (1), *peripheral* (2), *extranodal* (3), *combined* (4).
 11. **Cortical thickening**: *not evaluable* (0), *absent* (1), *focal* (2), *concentric* (3), *eccentric* (4).
