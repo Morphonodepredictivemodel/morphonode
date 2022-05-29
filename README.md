@@ -22,7 +22,7 @@ The latest development version can be installed through **GitHub** from any **R*
 devtools::install_github("Morphonodepredictivemodel/morphonode")
 ```
 
-This will download the source code, build the morphonode tar.gz package, and install it locally.
+This will download the MPM source code, build the morphonode tar.gz package, and install it locally.
 
 &nbsp;
 
@@ -112,13 +112,13 @@ Ulrasound profiles showing one or more values marked as "**metastatic trait**" d
 
 ## Defining an ultrasound profile
 
-A new profile can be initialized manually, including each ultrasound value in the same order of the previous chapter (points 3 to 16).
+A new profile can be initialized manually, including each ultrasound value in the same order shown in the previous chapter (points 3 to 16).
 
 ```r
 x <- new.profile(c(10.0, 6.3, 1, 0, 0, 0, 0, -1, 2, 2, 3, -1, -1, -1))
 ```
 
-As shown in the code above, the object `x` contains -1 values, corresponding to missing data:
+As shown above, the object `x` may contain -1 values, corresponding to missing data:
 
 ```
 > x
@@ -173,7 +173,7 @@ While missing values are generally not a problem, the imputation is currently di
 
 ### Interactive input
 
-If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical and allow missing values. Pressing *enter* without typing any value will introduce a missing. Each feature comes with a brief explanation of the allowed values. If an invalid value is given, an error will be raised.
+If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical and allow missing values. Pressing *enter* without typing any value will introduce a missing. Each feature comes with a brief description of the allowed values. If an invalid value is given, an error will be raised.
 
 ## MPM output object
 
@@ -223,6 +223,10 @@ $profiles
 1131        2          2 1       HMR 0.004232 0.9853030 2.147091
 ```
 
-The `prediction` object contains the overall classification (`y.hat`), the decision taken by every of the 5 RFCs in the ensemble (`decisions`), and the out-of-bag error of each RFC (`oob.err`). Objects `E`, `p`, and `signature` contain the estimated RFC prediction error, the RBM malignancy risk estimate, and the computed metastatic risk signature (MRS), respectively. Finally, the `profiles` object shows the detailed characteristics of the k top-similar profiles, including: ultrasound features, observed phenotype (y), associated MRS (signature), prediction error estimate (E) of the default RFC ensemble, similarity with the input profile (R), euclidean distance to the input profile (D).
+The `prediction` object contains the overall classification (`y.hat`), the decision taken by the 5 RFCs in the ensemble (`decisions`), and the out-of-bag error of each RFC (`oob.err`). Objects `E`, `p`, and `signature` contain the estimated RFC prediction error, the RBM malignancy risk estimate, and the computed metastatic risk signature (MRS), respectively. Additionally, the `profiles` object shows the detailed characteristics of the k top-similar profiles, including: ultrasound features, observed phenotype (y), associated MRS (signature), prediction error estimate (E) of the default RFC ensemble, similarity with the input profile (R), and euclidean distance to the input profile (D).
 
-Inspecting this output may add further insights to understand the results. For instance, one of the similar profiles (the second) has a *non-malignant* phenotype, while all the others are *malignant*. Looking at D, we can see that the second profile is indeed more distant than the others, although they look close, according to cosine similarity.
+Inspecting this output may add further insights to understand the results. For instance, one of the similar profiles (the second) has a *non-malignant* phenotype, while all the others are *malignant* (in agreement with the predictions). Looking at D, we can see that the second profile is indeed more distant than the others, although they look close, according to cosine similarity.
+
+# Additional functionalities
+
+In addition to the prediction suite, the **morphonode** package offers a number of supplementary tools, including: (i) ultrasound data simulation, (ii) builders for random forest and logistic classifiers, (iii) functions for bootstrap-based confidence intervals and standard error estimation.
