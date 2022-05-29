@@ -225,7 +225,7 @@ $profiles
 
 The `prediction` object contains the overall classification (`y.hat`), the decision taken by the 5 RFCs in the ensemble (`decisions`), and the out-of-bag error of each RFC (`oob.err`). Objects `E`, `p`, and `signature` contain the estimated RFC prediction error, the RBM malignancy risk estimate, and the computed metastatic risk signature (MRS), respectively. Additionally, the `profiles` object shows the detailed characteristics of the k top-similar profiles, including: ultrasound features, observed phenotype (y), associated MRS (signature), prediction error estimate (E) of the default RFC ensemble, similarity with the input profile (R), and euclidean distance to the input profile (D).
 
-Inspecting this output may add further insights to understand the results. For instance, one of the similar profiles (the second) has a *non-malignant* phenotype, while all the others are *malignant* (in agreement with the predictions). Looking at D, we can see that the second profile is indeed more distant than the others, although they look close, according to cosine similarity.
+Inspecting this output may add further insights to understand the results. For instance, one of the similar profiles (the second) has a *non-malignant* phenotype, while all the others are *malignant* (in agreement with the predictions). Looking at D, we can see that the second profile is indeed more distant than the others, although they look close according to cosine similarity.
 
 # Additional functionalities
 
