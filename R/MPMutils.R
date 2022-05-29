@@ -38,7 +38,7 @@
 #' @importFrom CMA GenerateLearningsets classification
 #' @export
 #'
-#' @return An object of class A list of objects of class "cloutput" and 
+#' @return A list of objects of class "cloutput" and 
 #'    "clvarseloutput", respectively.
 #'
 #' @author Fernando Palluzzi \email{fernando.palluzzi@gmail.com}
