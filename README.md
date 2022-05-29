@@ -229,4 +229,8 @@ Inspecting this output may add further insights to understand the results. For i
 
 # Additional functionalities
 
-In addition to the prediction suite, the **morphonode** package offers a number of supplementary tools, including: (i) ultrasound data simulation, (ii) builders for random forest and logistic classifiers, (iii) functions for bootstrap-based confidence intervals and standard error estimation.
+In addition to the prediction suite, the **morphonode** package offers a number of supplementary tools, including:
+
+- ultrasound data simulation,
+- builders for random forest and logistic classifiers,
+- functions for bootstrap-based confidence intervals and standard error estimation.
