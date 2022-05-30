@@ -250,6 +250,13 @@ x.mmr <- new.profile(us.simulate(signature = "MMR"))
 x.hmr <- new.profile(us.simulate(signature = "HMR"))
 x.met <- new.profile(us.simulate(signature = "MET"))
 
-# Since simulation is a stochastic process, based on observed ultrasound features and phenotypes frequencies, it is possible to have a few unexpected phenotypes (i.e., malignant LMRs or non-malignant MET).
+# Since simulation is a stochastic process, based on observed ultrasound features and phenotypes frequencies,
+# it is possible to observe a low frequency of unexpected phenotypes (e.g., malignant LMRs or non-malignant METs).
+# Let's test what happens ...
 
+y.lmr <- us.predict(x.lmr)
+y.mmr <- us.predict(x.mmr)
+y.hmr <- us.predict(x.hmr)
+y.met <- us.predict(x.met)
 ```
+
