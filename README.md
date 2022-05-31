@@ -305,14 +305,17 @@ library(mosaic)
 x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
 x <- x[, 2:16]     # This will include ultrasound features and phenotypes only
 
-# Secondly, we partition the input dataset in 75% training and 25% validation, using the vpart function:
+# Secondly, we prepare the ultrasound features for classification (i.e., by cheching the right data types),
+# and partition the input dataset in 75% training and 25% validation, using the vpart function:
 
+x <- check.rfcdata(x)
 x <- vpart(x, p = 0.75)
 
 # Finally, we define the model and build the RFC using the x$training.set and x$validation.set,
 # generating 10000 bootstrapped trees and using 3 random variables per tree branching (this may take a while):
 
 model <- formula("y ~ .")
+
 rfc <- buildPredictor(model, x$training.set, vset = x$validation.set, n = 10000, m = 3)
 rfc$performance
 ```
