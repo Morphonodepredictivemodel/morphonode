@@ -319,4 +319,3 @@ model <- formula("y ~ .")
 rfc <- buildPredictor(model, x$training.set, vset = x$validation.set, n = 10000, m = 3)
 rfc$performance
 ```
-
