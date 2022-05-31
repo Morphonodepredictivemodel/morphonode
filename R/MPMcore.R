@@ -578,6 +578,53 @@ mmrProb <- function(vp, vfl, eco, ct, fid, cmid, shape, cs, grp, dct = 2) {
 	}
 }
 
+#' @title Check RFC input data
+#'
+#' @description Assign ultasound data types for RFC building and validation.
+#' 
+#' @param x An (n, 14) ultrasound features data.frame, where n is the 
+#'    number of subjects.
+#' @param levels A list of length 15, corresponding to the levels of 
+#'    each ultrasound variable plus the phenotype (y = {0, 1}). 
+#'    Needed for categorical variables (factors) checking; 
+#'    for continuous variables, it should assume the nominal value of 0. 
+#'    If NULL (default), the \code{\link[morphonode]{mpm.levels}} object 
+#'    will be used.
+#' @param ... Currently ignored.
+#'
+#' @export
+#'
+#' @return A data.frame of ultrasound features with checked data type.
+#'
+#' @author Fernando Palluzzi \email{fernando.palluzzi@gmail.com}
+#'
+#' @seealso \code{\link[morphonode]{buildPredictor}}.
+#'
+#' @examples
+#' 
+#' # generate a dataset of 500 subjects
+#' x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
+#' x <- x[, 2:16]
+#' 
+#' # Assign the correct data types for RFC building and validation
+#' x <- check.rfcdata(x)
+#' summary(x)
+#'
+check.rfcdata <- function(x, levels = NULL, ...) {
+	if (is.null(levels)) {
+		levels <- mpm.levels
+		levels$y <- c(0, 1)
+	}
+	for (j in 1:ncol(x)) {
+		if (j > 2) {
+			x[, j] <- factor(x[, j], levels = levels[[j]])
+		} else {
+			x[, j] <- as.numeric(x[, j])
+		}
+	}
+	return(data.frame(x))
+}
+
 #' @title Generates a dichotomous ultrasound feature data.frame
 #'
 #' @description Convert an ultrasound feature data.frame (each row is 

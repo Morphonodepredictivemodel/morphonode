@@ -66,7 +66,7 @@ It can be one among "loss" (default) and "similarity". The former
 estimates the error on a new prediction based on a parametric linear 
 relationship between the loss function and the observed (reference 
 dataset) error. The latter estimates the error as the average of 
-the observed errors of the top-3 similar profilesfrom the reference 
+the observed errors of the top-3 similar profiles from the reference 
 dataset (non-parametric).}
 
 \item{b0}{Baseline uncertainty. A vector of three values representing 
