@@ -402,6 +402,10 @@ P <- performance(obs = mpm.us$y, pred = y.hat)
 P
 ```
 
-## Generating bootstrap confidence intervals for performance indices
+## Generating bootstrap confidence intervals for predictive performance indices
 
-...
+In some cases (e.g., heterogeneous, heteroschedastic, or non-gaussian data) it could be convenient to compute robust confidence intervals (CI) also for predictive performance indices, independenttly from the method used to do the prediction. The **morphonode** function `p.boot` allows the computation of point estimate and bootstrap CI, starting from observed and predicted values, for: F1 score (f1), accuracy, sensitivity, specificity, positive predictive value (ppv or precision), negative predictive value (npv), positive likelihood ratio (plr), negative likelihood ratio (nlr), false positive rate (fpr), false negative rate (fnr), false negative cost (fnc, fn/(tp + tn)). Let's see some examples:
+
+```r
+
+```
