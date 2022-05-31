@@ -260,4 +260,30 @@ y.hmr <- us.predict(x.hmr)
 y.met <- us.predict(x.met)
 ```
 
-In the vast majority of cases, HMR and MET signatures lead to a malignant phenotype (an a high malignancy risk), while LMR will be non-malignant. For a large simulated dataset, low-frequency profiles may arise at a relevant frequency and could be studied to further investigate their ultrasound properties. Argument `reps` allows the creaton of a (reps, m) data.frame, where m = 14 is the number of ultrasound features.
+In the vast majority of cases, HMR and MET signatures lead to a malignant phenotype (an a high malignancy risk), whereas LMR will be non-malignant. For a large simulated dataset, low-frequency profiles may arise at a relevant frequency and could be studied to further investigate their ultrasound properties. Argument `reps` allows the creaton of a (reps, m) matrix, where m = 14 is the number of ultrasound features:
+
+```r
+lmr0 <- us.simulate(reps = 300, signature = "LMR")
+mmr0 <- us.simulate(reps = 200, signature = "MMR", y = 0)
+mmr1 <- us.simulate(reps = 100, signature = "MMR", y = 1)
+hmr1 <- us.simulate(reps = 200, signature = "HMR")
+met1 <- us.simulate(reps = 200, signature = "MET")
+
+simdata <- data.frame(rbind(lmr0, mmr0, mmr1, hmr1, met1))
+head(simdata)
+dim(simdata)
+```
+
+In the example above, we simulated a dataset of 1000 subjects (300 LMR, 300 MMR, 200 HMR, and 200 MET). As shown, the user might enforce a specific phenotype in combination with the MMR signature. This is allowed for MMR only, given its heterogeneous nature. Conversely, for LMR, HMR, and MET signatures, the phenotype is locked to 0, 1, and 1, respecively. For these three signatures, unexpected phenotypes (1, 0, and 0, respectively) might occur at a low rate (rougly 3-4% for LMR, and 5-10% for HMR and MET). Naturally, simulated datasets can be created based on phenotype frequencies:
+
+```r
+y0 <- us.simulate(reps = 300, y = 0)
+y1 <- us.simulate(reps = 200, y = 1)
+
+simdata <- data.frame(rbind(y0, y1))
+head(simdata)
+dim(simdata)
+```
+
+The default **morphonode** simulated dataset is a data.frame of 948 rows (simulated ultrasound profiles) and 18 columns, including: a progressive number used as unique profile identifier (ID), 14 ultrasound features used for RFC and RBM building, expected simulation phenotype used as ground truth (y = 0: non-malignant, 1: malignant), metastatic risk signature associated to each simulated ultrasound profile (signature), subject-level prediction error calculated as Brier score (E). This dataset was generated as a 4-fold expansion (n = 948, 440 malignant and 508 non-malignant) of the original ultrasound feature dataset of 237 groin samples (75 malignant and 162 non-malignant) from Fragomeni et al. (2022), using the **morphonode** simulation utility.
+
