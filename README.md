@@ -363,7 +363,7 @@ The **morphonode** object `mpm.rfc` contains: (i) the 5 `randomForest` objects o
 
 ## Building a robust binomial model (RBM)
 
-One of the modules of the MPM suite is the RBM, for the estimation of malignancy risk. Two main limitations could affect the performances of a regression model, including the logistic one: (i) deviation from normality constraints, and (ii) high dimensionality (#variables >> #subjects). Both these aspects impacted the development of a risk estimation model in the MPM suite. The former was (at least partially) addressed by estimating bootstrap standard errors (SE), through the **morphonode** function `boot.se`. The latter, issued by the low frequency of certain values (levels) of categorical ultrasound features, was addressed by using a dichotomized version of each regressor. Let us build the elements of the RBM:
+One of the modules of the MPM suite is the RBM, for the estimation of malignancy risk. Two main limitations could affect the performances of a regression model, including the logistic one: (i) deviation from normality constraints, and (ii) high dimensionality (#variables >> #subjects). Both these aspects impacted the development of a risk estimation model in the MPM suite. The former was (at least partially) addressed by estimating bootstrap standard errors (SE), through the **morphonode** function `boot.se`. The latter, issued by the low frequency of certain values (levels) of categorical ultrasound features, was addressed by using a dichotomized version of each regressor. Let us create the building blocks of the RBM:
 
 ```r
 # The first step is to obtain a dichotomous version of the MPM ultrasound feature dataset
