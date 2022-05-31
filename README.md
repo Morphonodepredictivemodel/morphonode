@@ -316,5 +316,20 @@ x <- vpart(x, p = 0.75)
 model <- formula("y ~ .")
 
 rfc <- buildPredictor(model, x$training.set, vset = x$validation.set, n = 10000, m = 3)
-rfc$performance
+```
+
+The output should look like this:
+
+```
+Call:
+ randomForest(formula = model, data = data, ntree = n, mtry = m,      keep.forest = TRUE, proximity = TRUE, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 10000
+No. of variables tried at each split: 3
+
+        OOB estimate of  error rate: 5.6%
+Confusion matrix:
+    0   1 class.error
+0 192  10  0.04950495
+1  11 162  0.06358382
 ```
