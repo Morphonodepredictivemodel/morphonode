@@ -389,4 +389,19 @@ SE <- boot.se(fit, boot)
 SE
 ```
 
-The **morphonode** object `mpm.rbm` collects these results in three objects: `mpm.rbm$model` (the fitted model), `mpm.rbm$fit` (MLE model fitting), and `mpm.rbm$coef` (bootstrap estimates, 95% confidence intervals, and P-values).
+The **morphonode** object `mpm.rbm` collects these results in three objects: `mpm.rbm$model` (the fitted model), `mpm.rbm$fit` (MLE model fitting results), and `mpm.rbm$coef` (bootstrap estimates, 95% confidence intervals, and P-values).
+It is also possible to assess RBM performances by using risk estimates and the `performance` function:
+
+```r
+# Compute malignancy risks in batch
+p <- predict(mpm.rbm$fit, dichotomize(mpm.us[2:15], asFactor = TRUE), type = "response")
+
+# Dichotomize risk values and compare it against the observed phenotypes (p = 0.29 is the high risk cutoff)
+y.hat <- ifelse(p > 0.29, 1, 0)
+P <- performance(obs = mpm.us$y, pred = y.hat)
+P
+```
+
+## Generating bootstrap confidence intervals for performance indices
+
+...
