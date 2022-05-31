@@ -274,7 +274,7 @@ head(simdata)
 dim(simdata)
 ```
 
-In the example above, we simulated a dataset of 1000 subjects (300 LMR, 300 MMR, 200 HMR, and 200 MET). As shown, the user might enforce a specific phenotype in combination with the MMR signature. This is allowed for MMR only, given its heterogeneous nature. Conversely, for LMR, HMR, and MET signatures, the phenotype is locked to 0, 1, and 1, respecively. For these three signatures, unexpected phenotypes (1, 0, and 0, respectively) might occur at a low rate (rougly 3-4% for LMR, and 5-10% for HMR and MET). Naturally, simulated datasets can be created based on phenotype frequencies:
+In the example above, we simulated a dataset of 1000 subjects (300 LMR, 300 MMR, 200 HMR, and 200 MET). As shown, the user might enforce a specific phenotype in combination with the MMR signature. This is allowed for MMR only, given its heterogeneous nature. Conversely, for LMR, HMR, and MET signatures, the phenotype is locked to 0, 1, and 1, respecively. For these three signatures, unexpected phenotypes (1, 0, and 0, respectively) might occur at a low rate (roughly 3-4% for LMR, and 5-10% for HMR and MET). Naturally, simulated datasets can be created based on phenotype frequencies:
 
 ```r
 y0 <- us.simulate(reps = 300, y = 0)
