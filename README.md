@@ -322,7 +322,8 @@ The output should look like this:
 
 ```
 Call:
- randomForest(formula = model, data = data, ntree = n, mtry = m,      keep.forest = TRUE, proximity = TRUE, importance = TRUE) 
+ randomForest(formula = model, data = data, ntree = n, mtry = m,
+              keep.forest = TRUE, proximity = TRUE, importance = TRUE) 
                Type of random forest: classification
                      Number of trees: 10000
 No. of variables tried at each split: 3
