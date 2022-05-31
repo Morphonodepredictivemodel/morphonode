@@ -384,7 +384,7 @@ fit <- glm(model, data = x, family = "binomial")
 n.reps <- 2000
 boot <- mosaic::do(n.reps) * coef(glm(model, data = mosaic::resample(x), family = "binomial"))
 
-# The boot.se function will compute robust SE, and related 95% C.I. and P-values
+# The boot.se function will compute robust SE, related 95% confidence intervals and P-values
 SE <- boot.se(fit, boot)
 SE
 ```
