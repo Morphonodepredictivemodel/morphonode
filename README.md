@@ -287,3 +287,33 @@ dim(simdata)
 
 The default **morphonode** simulated dataset (object `mpm.us`) is a data.frame of 948 rows (simulated ultrasound profiles) and 18 columns, including: a progressive number used as unique profile identifier (ID), 14 ultrasound features used for RFC and RBM building, expected simulation phenotype used as ground truth (y = 0: non-malignant, 1: malignant), metastatic risk signature associated to each simulated ultrasound profile (signature), subject-level prediction error calculated as Brier score (E). This dataset was generated as a 4-fold expansion (n = 948, 440 malignant and 508 non-malignant) of the original ultrasound feature dataset of 237 groin samples (75 malignant and 162 non-malignant) from Fragomeni et al. (2022), using the **morphonode** simulation utility.
 
+## Model builders
+
+The **morphonode** package offers a number of functions to build and validate new RFC-based classifiers on-the-fly. These include: `buildPredictor`, `vpart`, `rfc`, and `brier`. The `buildPredictor` function creates an object of class `randomForest` (Liaw et al. 2002), including its performances, if a validation set is given:
+
+```r
+# Firstly, let's create an ultrasound feature dataset of n subject (e.g., N = 500).
+# In absence of a real dataset, this can be done by either simulating it ...
+
+y0 <- us.simulate(reps = 300, y = 0)
+y1 <- us.simulate(reps = 200, y = 1)
+x <- data.frame(rbind(y0, y1))
+
+# ... or by random sampling N subjects from the mpm.us object:
+
+library(mosaic)
+x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
+x <- x[, 2:16]     # This will include ultrasound features and phenotypes only
+
+# Secondly, we partition the input dataset in 75% training and 25% validation, using the vpart function:
+
+x <- vpart(x, p = 0.75)
+
+# Finally, we define the model and build the RFC using the x$training.set and x$validation.set,
+# generating 10000 bootstrapped trees and using 3 random variables per tree branching (this may take a while):
+
+model <- formula("y ~ .")
+rfc <- buildPredictor(model, x$training.set, vset = x$validation.set, n = 10000, m = 3)
+rfc$performance
+```
+
