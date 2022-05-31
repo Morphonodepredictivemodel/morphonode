@@ -236,7 +236,7 @@ In addition to the prediction suite, the **morphonode** package offers a number 
 - functions for **bootstrap-based** confidence intervals and standard error estimation.
 
 ## Ultrasound data simulation
-y <- x$y
+
 Data simulation can be convenient for validation purposes or to evaluate the properties of specific ultasound profiles and their impact on patients' phenotype and metatization risk. The **morphonode** package offers the `us.simulate` function to generate a number of different ultrasound feature vector. Launched without arguments, `us.simulate()` will create a generic feature vector, that can be concatenated with `new.profile` to create a new ultrasound profile. It is often convenient restrict the simulation (or part of the simulated dataset) to a specific range of values. Argument `y` restricts the simulation to either malignant (1) or not malignant (0), while argument `signature` restricts it to one of the MRS (i.e., LMR, MMR, HMR, MET). Here is a list of examples:
 
 ```r
