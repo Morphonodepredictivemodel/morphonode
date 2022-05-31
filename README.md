@@ -301,7 +301,6 @@ x <- data.frame(rbind(y0, y1))
 
 # ... or by random sampling N subjects from the mpm.us object:
 
-library(mosaic)
 x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
 x <- x[, 2:16]     # This will include ultrasound features and phenotypes only
 
