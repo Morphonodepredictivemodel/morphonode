@@ -20,7 +20,7 @@ methods, including: "LOOCV", "CV", "MCCV", and "bootstrap"
 \item{...}{Currently ignored.}
 }
 \value{
-An object of class A list of objects of class "cloutput" and 
+A list of objects of class "cloutput" and 
    "clvarseloutput", respectively.
 }
 \description{

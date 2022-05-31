@@ -3,6 +3,7 @@
 export(boot.se)
 export(brier)
 export(buildPredictor)
+export(check.rfcdata)
 export(dichotomize)
 export(euclidean)
 export(imp.missing)
