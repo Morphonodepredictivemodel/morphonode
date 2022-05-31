@@ -359,3 +359,34 @@ err
 err/length(E)
 ```
 
+The **morphonode** object `mpm.rfc` contains: (i) the 5 `randomForest` objects of the RFC ensemble (`mpm.rfc$rfc`), as well as the the training (`mpm.rfc$training`) and validation (`mpm.rfc$validation`) sets, (ii) RFC validation performances (`mpm.rfc$performance`), and (iii) ultrasound feature ranking based on the average of minmax-normalized MDA and MDG values (`mpm.rfc$ranking`).
+
+## Building a robust binomial model (RBM)
+
+One of the modules of the MPM suite is the RBM, for the estimation of malignancy risk. Two main limitations could affect the performances of a regression model, including the logistic one: (i) deviation from normality constraints, and (ii) high dimensionality (#variables >> #subjects). Both these aspects impacted the development of a risk estimation model in the MPM suite. The former was (at least partially) addressed by estimating bootstrap standard errors (SE), through the **morphonode** function `boot.se`. The latter, issued by the low frequency of certain values (levels) of categorical ultrasound features, was addressed by using a dichotomized version of each regressor. Let us build the elements of the RBM:
+
+```r
+# The first step is to obtain a dichotomous version of the MPM ultrasound feature dataset
+x <- dichotomize(mpm.us, asFactor = TRUE)
+
+# Secondly, we define the model to be fitted
+model <- formula(paste0(c("y ~ shortAxis + cortical + hilum + ",
+                               "inflammatoryStroma + extracapsularSpread + ",
+                               "ecostructure + FID + VFL + corticalThickening + ",
+                               "vascularPattern + CMID + shape + grouping + ",
+                               "colorScore"), collapse = ""))
+
+# Finally, we fit both a maximum likelihood and a bootstrapped version of the model
+# (bootstrap may take a while)
+
+fit <- glm(model, data = x, family = "binomial")
+
+n.reps <- 2000
+boot <- mosaic::do(n.reps) * coef(glm(model, data = mosaic::resample(x), family = "binomial"))
+
+# The boot.se function will compute robust SE, and related 95% C.I. and P-values
+SE <- boot.se(fit, boot)
+SE
+```
+
+The **morphonode** object `mpm.rbm` collects these results in three objects: `mpm.rbm$model` (the fitted model), `mpm.rbm$fit` (MLE model fitting), and `mpm.rbm$coef` (bootstrap estimates, 95% confidence intervals, and P-values).
