@@ -404,8 +404,27 @@ P
 
 ## Generating bootstrap confidence intervals for predictive performance indices
 
-In some cases (e.g., heterogeneous, heteroschedastic, or non-gaussian data) it could be convenient to compute robust confidence intervals (CI) also for predictive performance indices, independenttly from the method used to do the prediction. The **morphonode** function `p.boot` allows the computation of point estimate and bootstrap CI, starting from observed and predicted values, for: F1 score (f1), accuracy, sensitivity, specificity, positive predictive value (ppv or precision), negative predictive value (npv), positive likelihood ratio (plr), negative likelihood ratio (nlr), false positive rate (fpr), false negative rate (fnr), false negative cost (fnc, fn/(tp + tn)). Let's see some examples:
+In some cases (e.g., heterogeneous, heteroschedastic, or non-gaussian data) it could be convenient to compute robust confidence intervals (CI) also for predictive performance indices, independenttly from the method used to do the prediction. The **morphonode** function `p.boot` allows the computation of point estimate and bootstrap CI, starting from observed and predicted values, for: F1 score (f1), accuracy, sensitivity, specificity, positive predictive value (ppv or precision), negative predictive value (npv), positive likelihood ratio (plr), negative likelihood ratio (nlr), false positive rate (fpr), false negative rate (fnr), false negative cost (fnc, fn/(tp + tn)). By default, `p.boot` computes the bias-corrected and accelerated (BCa) bootstrap CI (DiCiccio and Efron, 1996) and 5000 sampling iterations (a high number of iterations ensures algorithm convergence). Let's see some examples:
 
 ```r
+# Let's evaluate the RFC1 (first RFC of the ensemble) performances
+y.hat <- predict(mpm.rfc$rfc$RFC1, mpm.rfc$validation$V1)
 
+# Actual ultrasound phenotype values, taken ftom the first validation set
+y <- mpm.rfc$validation$V1$y
+
+# The p.boot input is a data.frame with two columns: predicted and observed values
+Y <- data.frame(y.hat, y)
+
+# F1 score (default performance index) bootstrap confidence intervals
+F1 <- p.boot(Y)
+F1$boot$t0                # F1 score observed value
+F1$ci$bca[4:5]            # F1 score bca confidence interval
+
+# Accuracy bootstrap confidence intervals
+A <- p.boot(Y, formula = "accuracy")
+A$boot$t0                 # Accuracy observed value
+A$ci$bca[4:5]             # Accuracy bca confidence interval 
+
+# You may try other RFCs and indices ...
 ```
