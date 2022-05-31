@@ -899,7 +899,7 @@ p.fnc <- function(x, j, real = NULL) {
 #'    predictive value), "npv" (negative predictive value), "plr" (positive 
 #'    likelihood ratio), "nlr" (hegative likelihood ratio), "fpr" (false 
 #'    positive rate), "fdr" (false discovery rate), "fnr" (flase negative 
-#'    rate), "fnc" (false negative cost = TP/(FN + FP), see 
+#'    rate), "fnc" (false negative cost = FN/(TP + TN), see 
 #'    Fragomeni et al. 2022).
 #' @param ... Currently ignored.
 #'
