@@ -237,7 +237,7 @@ In addition to the prediction suite, the **morphonode** package offers a number 
 
 ## Ultrasound data simulation
 
-Data simulation can be convenient for validation purposes or to evaluate the properties of specific ultasound profiles and their impact on patients' phenotype and metatization risk. The **morphonode** package offers the `us.simulate` function to generate a number of different ultrasound feature vector. Launched without arguments, `us.simulate()` will create a generic feature vector, that can be concatenated with `new.profile` to create a new ultrasound profile. It is often convenient restrict the simulation (or part of the simulated dataset) to a specific range of values. Argument `y` restricts the simulation to either malignant (1) or not malignant (0), while argument `signature` restricts it to one of the MRS (i.e., LMR, MMR, HMR, MET). Here is a list of examples:
+Data simulation can be convenient for validation purposes or to evaluate the properties of specific ultasound profiles and their impact on patients' phenotype and metatization risk. The **morphonode** package offers the `us.simulate` function to generate a number of different ultrasound feature vectors. Launched without arguments, `us.simulate()` will create a generic feature vector that, concatenated with the `new.profile` function, allows to create a new simulated profile. It is often convenient restrict the simulation (or part of the simulated dataset) to a specific range of values. Argument `y` restricts the simulation to either malignant (y = 1) or non-malignant (y = 0) phenotypes, while argument `signature` restricts it to one of the MRSs (i.e., LMR, MMR, HMR, MET). Here is a list of examples:
 
 ```r
 # Simulate a malignant and a non-malignant ultrasound profile
@@ -285,7 +285,7 @@ head(simdata)
 dim(simdata)
 ```
 
-The default **morphonode** simulated dataset (object `mpm.us`) is a data.frame of 948 rows (simulated ultrasound profiles) and 18 columns, including: a progressive number used as unique profile identifier (ID), 14 ultrasound features used for RFC and RBM building, expected simulation phenotype used as ground truth (y = 0: non-malignant, 1: malignant), metastatic risk signature associated to each simulated ultrasound profile (signature), subject-level prediction error calculated as Brier score (E). This dataset was generated as a 4-fold expansion (n = 948, 440 malignant and 508 non-malignant) of the original ultrasound feature dataset of 237 groin samples (75 malignant and 162 non-malignant) from Fragomeni et al. (2022), using the **morphonode** simulation utility.
+The default **morphonode** simulated dataset (object `mpm.us`) is a data.frame of 948 rows (simulated ultrasound profiles) and 18 columns, including: a progressive number used as unique profile identifier (ID), 14 ultrasound features used for RFC and RBM building, the expected phenotype used as ground truth (y = 0: non-malignant, 1: malignant), metastatic risk signature associated to each simulated ultrasound profile (signature), and subject-level prediction error calculated as Brier score (E). This dataset was generated as a 4-fold expansion (n = 948, 440 malignant and 508 non-malignant) of the original ultrasound feature dataset of 237 groin samples (75 malignant and 162 non-malignant) from Fragomeni et al. (2022), using the **morphonode** simulation utility.
 
 ## RFC building and validation
 
@@ -359,7 +359,7 @@ err
 err/length(E)
 ```
 
-The **morphonode** object `mpm.rfc` contains: (i) the 5 `randomForest` objects of the RFC ensemble (`mpm.rfc$rfc`), as well as the the training (`mpm.rfc$training`) and validation (`mpm.rfc$validation`) sets, (ii) RFC validation performances (`mpm.rfc$performance`), and (iii) ultrasound feature ranking based on the average of minmax-normalized MDA and MDG values (`mpm.rfc$ranking`).
+Currently, the **morphonode** ensemble classifier is stored in the object `mpm.rfc`. It contains: (i) the 5 `randomForest` objects of the RFC ensemble (`mpm.rfc$rfc`), as well as their training (`mpm.rfc$training`) and validation (`mpm.rfc$validation`) sets, (ii) RFC validation performances (`mpm.rfc$performance`), and (iii) ultrasound feature ranking based on the average of minmax-normalized MDA and MDG values (`mpm.rfc$ranking`).
 
 ## Building a robust binomial model (RBM)
 
