@@ -292,7 +292,7 @@ The default **morphonode** simulated dataset (object `mpm.us`) is a data.frame o
 The **morphonode** package offers a number of functions to build and validate new RFC-based classifiers on-the-fly. These include: `buildPredictor`, `vpart`, and `brier`. The `buildPredictor` function creates an object of class `randomForest` (Liaw et al. 2002), including its performances, if a validation set is given:
 
 ```r
-# Firstly, let's create an ultrasound feature dataset of n subject (e.g., N = 500).
+# Firstly, let's create an ultrasound feature dataset of N subjects (e.g., N = 500).
 # In absence of a real dataset, this can be done by either simulating it ...
 
 y0 <- us.simulate(reps = 300, y = 0)
