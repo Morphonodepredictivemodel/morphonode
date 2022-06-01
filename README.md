@@ -260,7 +260,7 @@ y.hmr <- us.predict(x.hmr)
 y.met <- us.predict(x.met)
 ```
 
-In the vast majority of cases, HMR and MET signatures lead to a malignant phenotype (an a high malignancy risk), whereas LMR will be non-malignant. For a large simulated dataset, low-frequency profiles may arise at a relevant frequency and could be studied to further investigate their ultrasound properties. Argument `reps` allows the creaton of a (reps, m) matrix, where m = 14 is the number of ultrasound features:
+In the vast majority of cases, HMR and MET signatures lead to a malignant phenotype (and a high malignancy risk), whereas LMR will be non-malignant. For a large simulated dataset, low-frequency profiles may arise at a relevant frequency and could be studied to further investigate their ultrasound properties. Argument `reps` allows the creaton of a (reps, m) matrix, where m = 14 is the number of ultrasound features:
 
 ```r
 lmr0 <- us.simulate(reps = 300, signature = "LMR")
