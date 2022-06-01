@@ -244,7 +244,7 @@ Data simulation can be convenient for validation purposes or to evaluate the pro
 x1 <- new.profile(us.simulate(y = 1))
 x0 <- new.profile(us.simulate(y = 0))
 
-# Simulate a LMR, an MMR, an HMR, and a MET profiles
+# Simulate a LMR, an MMR, an HMR, and a MET profile
 x.lmr <- new.profile(us.simulate(signature = "LMR"))
 x.mmr <- new.profile(us.simulate(signature = "MMR"))
 x.hmr <- new.profile(us.simulate(signature = "HMR"))
