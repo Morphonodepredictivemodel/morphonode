@@ -44,7 +44,7 @@ x <- new.profile(us.simulate(y = 1))
 ``` r
 mpm <- us.predict(x)
 ```
-The results should look like the following:
+The output message should look like the following:
 ```
        Morphonode Predictive Model output
 # ------------------------------------------------------------------------------------------- #
