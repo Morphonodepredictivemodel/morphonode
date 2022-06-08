@@ -304,14 +304,16 @@ x <- data.frame(rbind(y0, y1))
 x <- mosaic::sample(mpm.us, 500, replace = FALSE, prob = NULL)
 x <- x[, 2:16]     # This will include ultrasound features and phenotypes only
 
-# Secondly, we prepare the ultrasound features for classification (i.e., by cheching the right data types),
-# and partition the input dataset in 75% training and 25% validation, using the vpart function:
+# Secondly, we prepare the ultrasound features for classification (i.e., by cheching the right
+# data types), and partition the input dataset in 75% training and 25% validation, using the 
+# vpart function:
 
 x <- check.rfcdata(x)
 x <- vpart(x, p = 0.75)
 
-# Finally, we define the model and build the RFC using the x$training.set and x$validation.set,
-# generating 10000 bootstrapped trees and using 3 random variables per tree branching (this may take a while):
+# Finally, we define the model and build the RFC using the x$training.set and x$validation.set, 
+# generating 10000 bootstrapped trees and using 3 random variables per tree branching 
+# (this may take a while):
 
 model <- formula("y ~ .")
 
@@ -352,7 +354,8 @@ data <- x$training.set[, 1:14]
 # Compute the Brier scores for each subject
 E <- brier(data, y)
 
-# As a rule of thumb, if E is greater or equal to 1, the prediction should be considered as unreliable.
+# As a rule of thumb, if E is greater or equal to 1, the prediction should be 
+# considered as unreliable.
 quantile(E)
 err <- length(E[E >= 1])
 err
@@ -396,7 +399,8 @@ It is also possible to assess RBM performances by using risk estimates and the `
 # Compute malignancy risks in batch
 p <- predict(mpm.rbm$fit, dichotomize(mpm.us[2:15], asFactor = TRUE), type = "response")
 
-# Dichotomize risk values and compare it against the observed phenotypes (p = 0.29 is the high-risk cutoff)
+# Dichotomize risk values and compare it against the observed phenotypes 
+# (p = 0.29 is the high-risk cutoff)
 y.hat <- ifelse(p > 0.29, 1, 0)
 P <- performance(obs = mpm.us$y, pred = y.hat)
 P
