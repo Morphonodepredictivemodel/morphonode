@@ -3,7 +3,7 @@ The **Morphonode Predictive Model**, and the related **R** package `morphonode`,
 
 &nbsp;
 
-## Installation through the R package `devtools`
+## Instal the latest development version using devtools
 
 The latest development version can be installed through **GitHub** from any **R** environment:
 
@@ -16,7 +16,7 @@ This will download the MPM source code, build the morphonode tar.gz package, and
 
 &nbsp;
 
-## Install the latest release from the `morphonode` source package
+## Install the latest release from the morphonode source package
 
 The latest stable release is the **morphonode version 1.0.0**. You can download this and older versions from the **Releases** panel of this website.
 The zip or tar.gz package can be installed (from the home directory) in **R** with:
