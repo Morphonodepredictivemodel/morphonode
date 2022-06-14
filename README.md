@@ -25,9 +25,21 @@ install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
 ```
 &nbsp;
 
-# Using the Morphonode Predictive Model suite
+# Overview
+1. Using the Morphonode Predictive Model suite
+   1.1. Morphonode Predictive Model basic usage
+   1.2. Defining an ultrasound profile
+        - Interactive input
+   1.3. MPM output object
+2. Additional functionalities
+   2.1. Ultrasound data simulation
+   2.2. RFC building and validation
+   2.3. Building a robust binomial model (RBM)
+   2.4. Generating bootstrap confidence intervals for predictive performance indices
 
-## Morphonode Predictive Model basic usage
+# 1. Using the Morphonode Predictive Model suite
+
+## 1.1. Morphonode Predictive Model basic usage
 
 The whole MPM suite can be launched in two very simple analysis steps:
 
@@ -109,7 +121,7 @@ Both the input ultrasound profile and the similar ones are reported as a list of
 
 Ulrasound profiles showing one or more values marked as "**metastatic trait**" determine the **MET signature** (very high risk of multiple metastases).
 
-## Defining an ultrasound profile
+## 1.2. Defining an ultrasound profile
 
 A new profile can be initialized manually, including each ultrasound value in the same order shown in the previous chapter (points 3 to 16).
 
@@ -174,7 +186,7 @@ While missing values are generally not a problem, the imputation is currently di
 
 If the `new.profile()` function is launched without arguments, an interactive session is prompted. While short axis and cortical thickness take only numerical values and cannot be missing, the other features are categorical and allow missing values. Pressing *enter* without typing any value will introduce a missing. Each feature comes with a brief description of the allowed values. If an invalid value is given, an error will be raised.
 
-## MPM output object
+## 1.3. MPM output object
 
 Besides the displayed output, the MPM output (a list of 5 objects) shows some more details about the decisional process:
 
@@ -226,7 +238,7 @@ The `prediction` object contains the overall classification (`y.hat`), the decis
 
 Inspecting this output may add further insights to understand the results. For instance, one of the similar profiles (the second) has a *non-malignant* phenotype, while all the others are *malignant* (in agreement with the predictions). Looking at D, we can see that the second profile is indeed more distant than the others, although they look close according to cosine similarity.
 
-# Additional functionalities
+# 2. Additional functionalities
 
 In addition to the prediction suite, the **morphonode** package offers a number of supplementary tools, including:
 
@@ -234,7 +246,7 @@ In addition to the prediction suite, the **morphonode** package offers a number 
 - **builders** for random forest and logistic classifiers,
 - functions for **bootstrap-based** confidence intervals and standard error estimation.
 
-## Ultrasound data simulation
+## 2.1. Ultrasound data simulation
 
 Data simulation can be convenient for validation purposes or to evaluate the properties of specific ultasound profiles and their impact on patients' phenotype and metatization risk. The **morphonode** package offers the `us.simulate` function to generate a number of different ultrasound feature vectors. Launched without arguments, `us.simulate()` will create a generic feature vector that, concatenated with the `new.profile` function, allows to create a new simulated profile. It is often convenient restrict the simulation (or part of the simulated dataset) to a specific range of values. Argument `y` restricts the simulation to either malignant (y = 1) or non-malignant (y = 0) phenotypes, while argument `signature` restricts it to one of the MRSs (i.e., LMR, MMR, HMR, MET). Here is a list of examples:
 
@@ -286,7 +298,7 @@ dim(simdata)
 
 The default **morphonode** simulated dataset (object `mpm.us`) is a data.frame of 948 rows (simulated ultrasound profiles) and 18 columns, including: a progressive number used as unique profile identifier (ID), 14 ultrasound features used for RFC and RBM building, the expected phenotype used as ground truth (y = 0: non-malignant, 1: malignant), a metastatic risk signature associated to each simulated ultrasound profile (signature), and subject-level prediction error calculated as Brier score (E). This dataset was generated as a 4-fold expansion (n = 948, 440 malignant and 508 non-malignant) of the original ultrasound feature dataset of 237 groin samples (75 malignant and 162 non-malignant) from Fragomeni et al. (2022), using the **morphonode** simulation utility.
 
-## RFC building and validation
+## 2.2. RFC building and validation
 
 The **morphonode** package offers a number of functions to build and validate new RFC-based classifiers on-the-fly. These include: `buildPredictor`, `vpart`, and `brier`. The `buildPredictor` function creates an object of class `randomForest` (Liaw et al. 2002), including its performances, if a validation set is given:
 
@@ -363,7 +375,7 @@ err/length(E)
 
 Currently, the **morphonode** ensemble classifier is stored in the object `mpm.rfc`. It contains: (i) the 5 `randomForest` objects of the RFC ensemble (`mpm.rfc$rfc`), as well as their training (`mpm.rfc$training`) and validation (`mpm.rfc$validation`) sets, (ii) RFC validation performances (`mpm.rfc$performance`), and (iii) ultrasound feature ranking based on the average of minmax-normalized MDA and MDG values (`mpm.rfc$ranking`).
 
-## Building a robust binomial model (RBM)
+## 2.3. Building a robust binomial model (RBM)
 
 One of the modules of the MPM suite is the RBM, for the estimation of malignancy risk. Two main limitations could affect the performances of a regression model, including the logistic one: (i) deviation from normality constraints, and (ii) high dimensionality (#variables >> #subjects). Both these aspects impacted the development of a risk estimation model in the MPM suite. The former was (at least partially) addressed by estimating bootstrap standard errors (SE), through the **morphonode** function `boot.se`. The latter, issued by the low frequency of certain values (levels) of categorical ultrasound features, was addressed by using a dichotomized version of each regressor. Let us create the building blocks of the RBM:
 
@@ -405,7 +417,7 @@ P <- performance(obs = mpm.us$y, pred = y.hat)
 P
 ```
 
-## Generating bootstrap confidence intervals for predictive performance indices
+## 2.4. Generating bootstrap confidence intervals for predictive performance indices
 
 In some cases (e.g., heterogeneous, heteroschedastic, or non-gaussian data) it could be convenient to compute robust confidence intervals (CI) also for predictive performance indices, independenttly from the method used to do the prediction. The **morphonode** function `p.boot` allows the computation of point estimate and bootstrap CI, starting from observed and predicted values, for: F1 score (`f1`), `accuracy`, `sensitivity`, `specificity`, positive predictive value (`ppv` or `precision`), negative predictive value (`npv`), positive likelihood ratio (`plr`), negative likelihood ratio (`nlr`), false positive rate (`fpr`), false negative rate (`fnr`), false negative cost (`fnc`, fn/(tp + tn)). By default, `p.boot` computes the bias-corrected and accelerated (BCa) bootstrap CI (DiCiccio and Efron, 1996) for the F1 score, with 5000 sampling iterations (this number of iterations should ensure algorithm convergence). Let's see some examples:
 
