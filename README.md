@@ -18,7 +18,7 @@ This will download the MPM source code, build the morphonode tar.gz package, and
 
 ## Install the latest release from the morphonode source package
 
-The latest stable release is the **morphonode version 1.0.0**. You can download this and older versions from the **Releases** panel of this website, as a zip or tar.gz package. You can install morphonode from any directory (e.g., the home directory `~`) in **R** with:
+The latest stable release is the **morphonode version 1.0.0**. You can download this and older versions from the **Releases** panel of this website, as a zip or tar.gz package. You can install morphonode from any directory (e.g., the home directory "~") in **R** with:
 
 ``` r
 install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
