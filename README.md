@@ -30,7 +30,7 @@ install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
 1. Using the Morphonode Predictive Model suite
    - 1.1. Morphonode Predictive Model basic usage
    - 1.2. Defining an ultrasound profile
-     - 1.2.a. Interactive input
+      - 1.2.a. Interactive input
    - 1.3. MPM output object
 
 2. Additional functionalities
