@@ -26,21 +26,18 @@ install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
 &nbsp;
 
 # Overview
+
 1. Using the Morphonode Predictive Model suite
-   
-   1.1. Morphonode Predictive Model basic usage
-   1.2. Defining an ultrasound profile
-        
-        - Interactive input
-   
-   1.3. MPM output object
+   - 1.1. Morphonode Predictive Model basic usage
+   - 1.2. Defining an ultrasound profile
+          - 1.2.a. Interactive input
+   - 1.3. MPM output object
 
 2. Additional functionalities
-   
-   2.1. Ultrasound data simulation
-   2.2. RFC building and validation
-   2.3. Building a robust binomial model (RBM)
-   2.4. Generating bootstrap confidence intervals for predictive performance indices
+   - 2.1. Ultrasound data simulation
+   - 2.2. RFC building and validation
+   - 2.3. Building a robust binomial model (RBM)
+   - 2.4. Generating bootstrap confidence intervals for predictive performance indices
 
 # 1. Using the Morphonode Predictive Model suite
 
