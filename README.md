@@ -38,6 +38,7 @@ install.packages("~/morphonode-1.0.0.tar.gz", repos = NULL)
    - 2.2. RFC building and validation
    - 2.3. Building a robust binomial model (RBM)
    - 2.4. Generating bootstrap confidence intervals for predictive performance indices
+
 &nbsp;
 
 # 1. Using the Morphonode Predictive Model suite
