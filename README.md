@@ -414,7 +414,7 @@ It is also possible to assess RBM performances by using risk estimates and the `
 # Compute malignancy risks in batch
 p <- predict(mpm.rbm$fit, dichotomize(mpm.us[2:15], asFactor = TRUE), type = "response")
 
-# Dichotomize risk values and compare it against the observed phenotypes 
+# Dichotomize risk values and compare them against the observed phenotypes 
 # (p = 0.29 is the high-risk cutoff)
 y.hat <- ifelse(p > 0.29, 1, 0)
 P <- performance(obs = mpm.us$y, pred = y.hat)
