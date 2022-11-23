@@ -169,10 +169,12 @@ Difference after iteration 2 is 0
        Morphonode Predictive Model output
 # ------------------------------------------------------------------------------------------- #
 |     Prediction (Morphonode-RFC): MALIGNANT (Y = 1)                                          |
-|      Estimated prediction error: 0.033     (cutoff: E < 1)                                  |
 |  Risk estimate (Morphonode-RBM): 0.916                                                      |
 |                      Risk level: HIGH (> 0.29)                                              |
 |       Signature (Morphonode-DT): HMR (high metastatic risk)                                 |
+|      Estimated prediction error: 0.033     (cutoff: E < 1)                                  |
+|                                                                                             |
+|                       DIAGNOSIS: MALIGNANT                                                  |
 |                                                                                             |
 |--- Input profile ---------------------------------------------------------------------------|
 |                                                                                             |
