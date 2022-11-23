@@ -103,7 +103,7 @@ The MPM suite is composed by 4 modules:
 - **Morphonode-SP**. Similarity prolfiling module. The module searches and ranks ultrasound profiles from the given (by default, the simulated) ultrasound
   features dataset. The default function is **cosine similarity** and **5 top-similar profiles** are shown to screen.
 
-A final DIAGNOSIS field shows the decision that the practitioner should take based on the predictions above. If at least 2/3 of the predictive modules (RFC, RBM, and DT) agree on a diagnosis (e.g., RFC: MALIGNANT, RBM: p > 0.29, DT: HMR signature), that will be the final diagnosis. If they disagree and/or yield an intermediate prediction (e.g., RFC: MALIGNANT, RBM: 0.23 \leq p \leq 0.29, DT: MMR signature), the diagnosis will be "UNDEFINED".
+A final DIAGNOSIS field shows the decision that the practitioner should take based on the predictions above. If at least 2/3 of the predictive modules (RFC, RBM, and DT) agree on a diagnosis (e.g., RFC: MALIGNANT, RBM: p > 0.29, DT: HMR signature), that will be the final diagnosis. If they disagree and/or yield an intermediate prediction (e.g., RFC: MALIGNANT, RBM: 0.23 ≤ p ≤ 0.29, DT: MMR signature), the diagnosis will be "UNDEFINED".
 In addition, the prediction error (E) provides an estimate of the overall prediction unreliability, by combining the uncertainty estimates deriving from the three predictive modules. As a rule of thumb, if E is above or equal to 1, the prediction should be considered as unreliable.
 
 Both the input ultrasound profile and the similar ones are reported as a list of attributes, including:
